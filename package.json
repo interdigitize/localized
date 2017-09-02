@@ -4,7 +4,7 @@
   "scripts": {
     "postinstall": "curl -s https://raw.githubusercontent.com/reactorcore/pomander/master/bin/install | bash",
     "start": "nodemon server",
-    "test": "NODE_ENV=test grunt test",
+    "test": " mocha ./server --recursive && jest --testPathPattern ./__test__\/*.js",
     "build": "webpack --watch"
   },
   "author": "Hack Reactor",
@@ -33,7 +33,8 @@
     "pg": "^6.1.5",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "redis": "^2.7.1"
+    "redis": "^2.7.1",
+    "jest": "20.0.4"
   },
   "devDependencies": {
     "babel-loader": "^7.0.0",

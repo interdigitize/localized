@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+  - 7.2
+
+services:
+  - postgreSQL
+
+cache:
+  directories:
+    - "node_modules"
+
+env:
+  - NODE_ENV=test
+
+before_install:
+- 'npm install -g grunt-cli'
+
+before_script:
+ - psql -c 'create database thesis;' -U postgres
+
+script:
+  - "npm test"
