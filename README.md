@@ -6,7 +6,7 @@ The project description
 
 - teamMember
 - Cameron Mehrabian
-- teamMember
+- Kamie Robinson
 - teamMember
 
 ## Roadmap
