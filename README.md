@@ -4,10 +4,10 @@ The project description
 
 ## Team
 
-- teamMember
+- Clarissa Chin
 - Cameron Mehrabian
 - Kamie Robinson
-- teamMember
+- Mykola Radchenko
 
 ## Roadmap
 
