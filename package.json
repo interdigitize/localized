@@ -4,12 +4,13 @@
   "scripts": {
     "postinstall": "curl -s https://raw.githubusercontent.com/reactorcore/pomander/master/bin/install | bash",
     "start": "nodemon server",
-    "test": " mocha ./server --recursive && jest --testPathPattern ./__test__\/*.js",
+    "test": " mocha ./server --recursive && jest --testPathPattern ./__test__/*.js",
     "build": "webpack --watch"
   },
   "author": "Hack Reactor",
   "license": "MIT",
   "dependencies": {
+    "antd": "^2.13.0",
     "babel-core": "^6.24.1",
     "bcrypt-nodejs": "^0.0.3",
     "bluebird": "^3.5.0",
@@ -23,6 +24,7 @@
     "express": "^4.15.2",
     "express-session": "^1.15.1",
     "grunt-pg": "https://github.com/watsoncj/grunt-pg.git",
+    "jest": "20.0.4",
     "knex": "^0.12.9",
     "morgan": "^1.8.1",
     "passport": "^0.3.2",
@@ -33,8 +35,7 @@
     "pg": "^6.1.5",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "redis": "^2.7.1",
-    "jest": "20.0.4"
+    "redis": "^2.7.1"
   },
   "devDependencies": {
     "babel-loader": "^7.0.0",
