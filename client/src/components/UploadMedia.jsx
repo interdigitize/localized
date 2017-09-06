@@ -2,25 +2,25 @@ import React from 'react';
 import { Upload, Icon, Modal } from 'antd';
 
 class PicturesWall extends React.Component {
-  constructor(props){
-  super(props);
+  constructor(props) {
+    super(props);
     this.state = {
       previewVisible: false,
       previewImage: '',
-      fileList: [{
+      fileList: [ {
         uid: -1,
         name: 'xxx.png',
         status: 'done',
         url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-      }],
+      } ],
     };
-    this.handleCancel= this.handleCancel.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
     this.handlePreview = this.handlePreview.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleCancel() {
-    this.setState({ previewVisible: false })
+    this.setState({ previewVisible: false });
   }
 
   handlePreview(file) {
@@ -31,7 +31,7 @@ class PicturesWall extends React.Component {
   }
 
   handleChange({ fileList }) {
-    this.setState({ fileList })
+    this.setState({ fileList });
   }
 
   render() {

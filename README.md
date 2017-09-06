@@ -2,7 +2,7 @@
 
 The project description
 
-## Team 
+## Team
 
 - Clarissa Chin
 - Cameron Mehrabian
@@ -34,7 +34,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
 - Node 6.9.x
 - Redis 3.2.x
 - Postgresql 9.6.x
-- etc
+-
 
 ## Development
 
@@ -71,7 +71,7 @@ IMPORTANT: ensure `postgres` is running before performing these steps.
 
 Use grunt to create a new database for your development and test environments:
 
-Development envronment: `grunt pgcreatedb:default`
+Development environment: `grunt pgcreatedb:default`
 
 Other environments, specify like so: `NODE_ENV=test grunt pgcreatedb:default`
 
@@ -79,17 +79,14 @@ Other environments, specify like so: `NODE_ENV=test grunt pgcreatedb:default`
 
 In terminal, from the root directory:
 
-To migrate to the latest version, run:
+To populate the database with seed data, run:
+`knex seed:run --env NODE_ENV`
 
+To migrate to the latest version, run:
 `knex migrate:latest --env NODE_ENV`
 
 To rollback a version, run:
-
 `knex migrate:rollback --env NODE_ENV`
-
-To populate the database with seed data, run:
-
-`knex seed:run --env NODE_ENV`
 
 Note: `--env NODE_ENV` may be omitted for development. For example, `knex migrate:latest` will run all migrations in the development environment, while `knex migrate:latest --env test` will migrate in the test environment.
 
