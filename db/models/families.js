@@ -1,7 +1,7 @@
 const db = require('../');
 
 const Families = db.Model.extend({
-  tableNmae: 'families',
+  tableName: 'families',
 });
 
 module.exports = db.model('Families', Families);
