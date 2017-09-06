@@ -4,7 +4,7 @@ const Families = require('./');
 
 const Profile_Families = db.Model.extend({
   tableName: 'profile_families',
-  families_id: function(){
+  families_id: function() {
     return this.hasmany(Profiles);
   },
   profiles_id: function() {
