@@ -2,7 +2,7 @@
 
 The project description
 
-## Team
+## Team 
 
 - Clarissa Chin
 - Cameron Mehrabian
