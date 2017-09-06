@@ -4,7 +4,8 @@
   "scripts": {
     "postinstall": "curl -s https://raw.githubusercontent.com/reactorcore/pomander/master/bin/install | bash",
     "start": "nodemon server",
-    "test": " mocha ./server --recursive && jest --testPathPattern ./__test__/*.js",
+    "test": "mocha ./server --recursive && jest --testPathPattern ./__test__/*.js",
+    "test-frontend": "jest --testPathPattern ./__test__/*.js",
     "build": "webpack --watch"
   },
   "author": "Hack Reactor",
@@ -44,6 +45,7 @@
     "babel-preset-react": "^6.23.0",
     "chai": "^3.5.0",
     "css-loader": "^0.28.7",
+    "enzyme": "^2.9.1",
     "grunt": "~0.4.5",
     "grunt-eslint": "^19.0.0",
     "grunt-mocha-test": "^0.13.2",
