@@ -23,15 +23,15 @@ router.route('/')
       type: req.body.type, 
       title: req.body.title,
       description: req.body.description,
-      etag: req.body.etag,
+      etag: req.body.etag,//response from AWS
     })
-    .save()
-    .then((saved) => {
-      res.json({saved})
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+      .save()
+      .then((saved) => {
+        res.json({saved});
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     // res.status(201).send({ data: 'Posted!' });
   });
 
@@ -45,9 +45,9 @@ router.route('/:id')
           title: req.body.title,
           description: req.body.description,
         })
-        .then((saved) => {
-          res.json({saved});
-        });
+          .then((saved) => {
+            res.json({saved});
+          });
       });
   })
   .delete((req, res) => {
