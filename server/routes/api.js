@@ -23,7 +23,7 @@ router.route('/')
       type: req.body.type, 
       title: req.body.title,
       description: req.body.description,
-      etag: req.body.etag,//response from AWS
+      etag: req.body.etag//response from AWS
     })
       .save()
       .then((saved) => {
