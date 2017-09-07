@@ -8,7 +8,7 @@ class Uploader extends React.Component {
     this.state = {
       data_uri: null,
       processing: false
-    }
+    };
     this.handleFile = this.handleFile.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -29,24 +29,24 @@ class Uploader extends React.Component {
       },
       dataType: 'json'
     })
-    .then( res => {
-      debugger;
+      .then( res => {
+        debugger;
 
-      console.log('RES:', res);
-      this.setState({
-        fileList: [],
-        uploading: false,
-        processing: false
+        console.log('RES:', res);
+        this.setState({
+          fileList: [],
+          uploading: false,
+          processing: false
+        });
+        console.log('upload successfully.');
+      })
+      .catch(err => {
+        this.setState({
+          uploading: false,
+          processing: false
+        });
+        console.log(err);
       });
-      console.log('upload successfully.');
-    })
-    .catch(err => {
-      this.setState({
-        uploading: false,
-        processing: false
-      });
-      console.log(err);
-    });
   }
 
   handleFile(e) {
