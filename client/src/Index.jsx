@@ -9,6 +9,7 @@ import UploadMedia from './components/UploadMedia.jsx';
 import PostsContainer from './components/PostsContainer.jsx';
 import FamiliesContainer from './components/FamiliesContainer.jsx';
 import posts from './dummyphotodata';
+import family from './dummyfamilydata';
 
 class Index extends Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class Index extends Component {
           <Navigation />
           <Layout style={{flexDirection: 'column'}}>
             <Content style={{ background: '#fff', padding: 5 }}>
-              <FamiliesContainer />
+              <FamiliesContainer familyImages={family}/>
             </Content>
             <Content style={{ background: '#f9f9f9', padding: 10 }}>
               <UploadMedia />
