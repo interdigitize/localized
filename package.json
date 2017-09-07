@@ -35,6 +35,7 @@
     "passport-twitter": "^1.0.4",
     "pg": "^6.1.5",
     "react": "^15.4.2",
+    "react-router-dom": "^4.2.2",
     "redis": "^2.7.1"
   },
   "devDependencies": {
