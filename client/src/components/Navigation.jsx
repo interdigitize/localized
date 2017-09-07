@@ -5,6 +5,7 @@ const { Header, Sider, Content } = Layout;
 import '../styles.css';
 import FamiliesContainer from './FamiliesContainer.jsx';
 import PostsContainer from './PostsContainer.jsx';
+import UploadMedia from './UploadMedia.jsx';
 
 var posts = [{ 'image': 'http://static.dnaindia.com/sites/default/files/2016/05/22/462997-arya-stark-in-game-of-thrones-season-6-epiosde-5-the-door.jpg',
   'title': 'arya',
@@ -103,6 +104,9 @@ class Navigation extends React.Component {
         <Layout>
           <Content style={{ background: '#fff', padding: 5 }}>
             <FamiliesContainer />
+          </Content>
+          <Content style={{ background: '#f9f9f9', padding: 10 }}>
+            <UploadMedia />
           </Content>
           <Content style={{background: '#f1f1f1', padding: 5, minHeight: 800}}>
             <PostsContainer posts={posts}/>
