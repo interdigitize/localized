@@ -30,8 +30,6 @@ class Uploader extends React.Component {
       dataType: 'json'
     })
       .then( res => {
-        debugger;
-
         console.log('RES:', res);
         this.setState({
           fileList: [],
