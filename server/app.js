@@ -25,7 +25,10 @@ app.use('/api', routes.api);
 app.use('/api/profiles', routes.profiles);
 
 app.get('*', (req, res) => {
-  res.render(path.resolve(__dirname, 'views', 'index.ejs'));
+  const preloadedState = {};
+  preloadedState.user = req.user;
+  // grab other relevant user data
+  res.render(path.resolve(__dirname, 'views', 'index.ejs'), { preloadedState });
 });
 
 module.exports = app;
