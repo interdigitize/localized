@@ -5,10 +5,11 @@ import UploadMedia from '../client/src/components/UploadMedia.jsx';
 describe('Image upload btn', function() {
 
   it('should mount in a full DOM', function() {
-    expect(mount(<UploadMedia />).find('.uploadedFiles').length).toBe(1);
+    expect(mount(<UploadMedia />).find('.fileUpload').length).toBe(1);
   });
 
-  it('should be selectable by class "uploadFiles"', function() {
-    expect(shallow(<UploadMedia />).is('.uploadedFiles')).toBe(true);
+  it('should be selectable by class "fileUpload"', function() {
+    expect(shallow(<UploadMedia />).is('.fileUpload')).toBe(true);
   });
+
 });
