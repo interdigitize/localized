@@ -3,6 +3,12 @@ const express = require('express');
 const router = express.Router();
 const Posts = require('../../db/models/posts');
 
+router.route('/upload')
+  .post((req, res) => {
+    console.log('BODY:', req.body);
+    res.status(201).send({ data: 'Uploaded!' });
+  });
+
 router.route('/')
   .get((req, res) => {
     Posts
@@ -58,5 +64,6 @@ router.route('/:id')
         res.json({destroyed});
       });
   });
+
 
 module.exports = router;
