@@ -4,6 +4,7 @@
   "scripts": {
     "postinstall": "curl -s https://raw.githubusercontent.com/reactorcore/pomander/master/bin/install | bash",
     "start": "nodemon server",
+    "migrate": "knex migrate:latest",
     "test": "mocha ./server --recursive && jest --testPathPattern ./__test__/",
     "test-frontend": "jest --testPathPattern ./__test__/",
     "build": "webpack --watch"
