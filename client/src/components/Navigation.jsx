@@ -78,7 +78,9 @@ class Navigation extends React.Component {
                 className="trigger"
                 type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
                 onClick={this.toggle}/>
-              <span>Expand/Collapse</span>
+              <span className="trigger"
+                type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
+                onClick={this.toggle}>Expand/Collapse</span>
             </Menu.Item>
             <Menu.Item key="2">
               <Icon type="home" />
