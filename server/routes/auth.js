@@ -5,7 +5,10 @@ const router = express.Router();
 
 router.route('/')
   .get(middleware.auth.verify, (req, res) => {
-    res.render('index.ejs');
+    const preloadedState = {};
+    preloadedState.user = req.user;
+    // grab other relevant user data
+    res.render('index.ejs', { preloadedState });
   });
 
 router.route('/login')
