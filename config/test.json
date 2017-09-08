@@ -1,7 +1,7 @@
 {
   "knex": {
     "connection": {
-      "database": "process.env.TEST_DATABASE_NAME"
+      "database": "thesis_test"
     }
   },
 
