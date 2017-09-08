@@ -22,6 +22,14 @@ class Navigation extends React.Component {
     });
   }
 
+  componentDidMount() {
+    if (window.innerWidth < 768) {
+      this.setState({
+        collapsed: true
+      });
+    }
+  }
+
   render() {
     return (
       <Sider
