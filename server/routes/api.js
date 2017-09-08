@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const Posts = require('../../db/models/posts');
 
+
 router.route('/')
   .get((req, res) => {
     Posts
@@ -20,7 +21,7 @@ router.route('/')
       url: req.body.url,
       user_id: req.body.user_id,
       family_id: req.body.family_id,
-      type: req.body.type, 
+      type: req.body.type,
       title: req.body.title,
       description: req.body.description,
       etag: req.body.etag//response from AWS
@@ -58,5 +59,6 @@ router.route('/:id')
         res.json({destroyed});
       });
   });
+
 
 module.exports = router;

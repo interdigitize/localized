@@ -1,65 +1,76 @@
 import React from 'react';
-import { Upload, Icon, Modal } from 'antd';
+import axios from 'axios';
 
-class PicturesWall extends React.Component {
+class Uploader extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
-      previewVisible: false,
-      previewImage: '',
-      fileList: [ {
-        uid: -1,
-        name: 'xxx.png',
-        status: 'done',
-        url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-      } ],
+      data_uri: null,
+      processing: false
     };
-    this.handleCancel = this.handleCancel.bind(this);
-    this.handlePreview = this.handlePreview.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.handleFile = this.handleFile.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleCancel() {
-    this.setState({ previewVisible: false });
-  }
-
-  handlePreview(file) {
+  handleSubmit(e) {
+    e.preventDefault();
     this.setState({
-      previewImage: file.url || file.thumbUrl,
-      previewVisible: true,
+      processing: true
     });
+
+    axios({
+      method: 'post',
+      url: '/upload',
+      data: {
+        data_uri: this.state.data_uri,
+        filename: this.state.filename,
+        filetype: this.state.filetype
+      },
+      dataType: 'json'
+    })
+      .then( res => {
+        console.log('RES:', res);
+        this.setState({
+          fileList: [],
+          uploading: false,
+          processing: false
+        });
+        console.log('upload successfully.');
+      })
+      .catch(err => {
+        this.setState({
+          uploading: false,
+          processing: false
+        });
+        console.log(err);
+      });
   }
 
-  handleChange({ fileList }) {
-    this.setState({ fileList });
+  handleFile(e) {
+    const reader = new FileReader(); //You can read about what this is here, https://developer.mozilla.org/en-US/docs/Web/API/FileReader
+    const file = e.target.files[0];
+    reader.onload = (upload) => {
+      this.setState({
+        data_uri: upload.target.result,
+        filename: file.name,
+        filetype: file.type
+      });
+    };
+    reader.readAsDataURL(file);
   }
 
   render() {
-    const { previewVisible, previewImage, fileList } = this.state;
-    const uploadButton = (
-      <div>
-        <Icon type="plus" />
-        <div className="ant-upload-text">Upload</div>
-      </div>
-    );
     return (
-      <div className="clearfix uploadedFiles">
-        {/* action="//jsonplaceholder.typicode.com/posts/" Uploading URL NOTE from KAMIE: need to add where to upload the posts and move back into upload*/ }
-        <Upload
-          listType="picture-card"
-          fileList={fileList}
-          onPreview={this.handlePreview}
-          onChange={this.handleChange}
-        >
-          {uploadButton}
-        </Upload>
-        <Modal visible={previewVisible} footer={null} onCancel={this.handleCancel}>
-          <img alt="example" style={{ width: '100%' }} src={previewImage} />
-        </Modal>
+      <div className='fileUpload'>
+        <label>Upload an image</label>
+        <form onSubmit={this.handleSubmit} encType="multipart/form-data">
+          <input type="file" onChange={this.handleFile} />
+          {this.state.processing ? <input disabled className='btn btn-primary' type="submit" value="Upload" /> : <input className='btn btn-primary' type="submit" value="Upload" />}
+        </form>
       </div>
     );
   }
 }
 
-// ReactDOM.render(<PicturesWall />, mountNode);
-export default PicturesWall;
+export default Uploader;
