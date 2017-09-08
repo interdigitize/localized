@@ -6,6 +6,7 @@
     "start": "nodemon server",
     "migrate": "knex migrate:latest",
     "test": "mocha ./server --recursive && ./db --recursive && jest --testPathPattern ./__test__/",
+    "test-server": "mocha ./server --recursive",
     "test-db": "NODE_ENV=test mocha ./db --recursive",
     "test-frontend": "jest --testPathPattern ./__test__/",
     "build": "webpack --watch"
