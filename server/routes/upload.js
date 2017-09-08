@@ -1,12 +1,9 @@
 'use strict';
 const express = require('express');
-const AWS = require('aws-sdk');
 const router = express.Router();
+const s3upload = require('../controllers').s3upload;
 
 router.route('/')
-  .post((req, res) => {
-    console.log('BODY:', req.body);
-    res.status(201).send({ data: 'Uploaded!' });
-  });
+  .post(s3upload.save);
 
 module.exports = router;
