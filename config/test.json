@@ -1,14 +1,14 @@
 {
   "knex": {
     "connection": {
-      "database": "thesis_test"
+      "database": "TEST_DATABASE_NAME"
     }
   },
 
   "passport": {
     "Google": {
-      "clientID": "",
-      "clientSecret": "",
+      "clientID": "PASSPORT_GOOGLE_CLIENTID",
+      "clientSecret": "PASSPORT_GOOGLE_CLIENTSECRET",
       "callbackURL": "http://localhost:3000/auth/google/callback"
     },
 

@@ -7,7 +7,6 @@
     "migrate": "knex migrate:latest",
     "test": "mocha ./server --recursive && mocha ./db --recursive && jest --testPathPattern ./__test__/",
     "test-server": "mocha ./server --recursive",
-    "test-db": "TEST_DATABASE_NAME=thesis_test NODE_ENV=test mocha ./db --recursive",
     "test-frontend": "jest --testPathPattern ./__test__/",
     "build": "webpack --watch"
   },
