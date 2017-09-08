@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Navigation from './components/navigation.jsx';
+import Navigation from './components/Navigation.jsx';
 import Footer from './components/Footer.jsx';
 import Main from './components/Main.jsx';
 import { Layout } from 'antd';
