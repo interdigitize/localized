@@ -6,7 +6,7 @@ class Uploader extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data_uri: null,
+      file: null,
       processing: false
     };
     this.handleFile = this.handleFile.bind(this);
@@ -19,28 +19,17 @@ class Uploader extends React.Component {
       processing: true
     });
 
-    axios({
-      method: 'post',
-      url: '/upload',
-      data: {
-        data_uri: this.state.data_uri,
-        filename: this.state.filename,
-        filetype: this.state.filetype
-      },
-      dataType: 'json'
-    })
+    console.log('FILE', this.state.file);
+    axios.post('/api/upload', this.state.file)
       .then( res => {
         console.log('RES:', res);
         this.setState({
-          fileList: [],
-          uploading: false,
           processing: false
         });
         console.log('upload successfully.');
       })
       .catch(err => {
         this.setState({
-          uploading: false,
           processing: false
         });
         console.log(err);
@@ -48,16 +37,11 @@ class Uploader extends React.Component {
   }
 
   handleFile(e) {
-    const reader = new FileReader(); //You can read about what this is here, https://developer.mozilla.org/en-US/docs/Web/API/FileReader
-    const file = e.target.files[0];
-    reader.onload = (upload) => {
-      this.setState({
-        data_uri: upload.target.result,
-        filename: file.name,
-        filetype: file.type
-      });
-    };
-    reader.readAsDataURL(file);
+    let formData = new FormData(); //FormData needs to be used for Multer to parse the data on the server
+    formData.append('file', e.target.files[0]);
+    this.setState({
+      file: formData
+    });
   }
 
   render() {
