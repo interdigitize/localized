@@ -1,5 +1,5 @@
 const db = require('../');
-const Families = require('./');
+const Familie = require('./');
 
 const Profile = db.Model.extend({
   tableName: 'profiles',
@@ -7,7 +7,7 @@ const Profile = db.Model.extend({
     return this.hasMany('Auth');
   },
   families: function() {
-    return this.belongsToMany(Families, 'profiles_families');
+    return this.belongsToMany('Familie', 'profiles_families');
   }
 });
 

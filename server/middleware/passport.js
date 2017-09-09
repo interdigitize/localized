@@ -6,6 +6,7 @@ const FacebookStrategy = require('passport-facebook').Strategy;
 const TwitterStrategy = require('passport-twitter').Strategy;
 const config = require('config')['passport'];
 const models = require('../../db/models');
+const knex = require('knex')(require('../../knexfile'));
 
 passport.serializeUser((profile, done) => {
   done(null, profile.id);
@@ -178,6 +179,17 @@ const getOrCreateOAuthProfile = (type, oauthProfile, done) => {
         throw oauthAccount;
       }
       return oauthAccount.related('profile');
+    })
+    .then((profile) => {
+      // create family
+      models.Familie.forge().save().then(familie => {
+        var family_id = familie.get('id');
+        var profile_id = profile.get('id');
+
+        profile.families().attach(familie);
+      });
+
+      return profile;
     })
     .then(profile => {
       if (profile) {

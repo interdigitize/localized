@@ -15,7 +15,7 @@ exports.up = function (knex, Promise) {
     }),
     knex.schema.createTableIfNotExists('profiles_families', (table) => {
       table.increments('id').unsigned().primary();
-      table.integer('familie_id').references('families.id').onDelete('CASCADE');
+      table.integer('family_id').references('families.id').onDelete('CASCADE');
       table.integer('profile_id').references('profiles.id').onDelete('CASCADE');
     }),
     knex.schema.createTableIfNotExists('families', (table) => {

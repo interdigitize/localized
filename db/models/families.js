@@ -1,11 +1,11 @@
 const db = require('../');
-const Profiles = require('./');
+const Profile = require('./');
 
-const Families = db.Model.extend({
+const Familie = db.Model.extend({
   tableName: 'families',
-  profile_families: function() {
-    return this.belongsToMany(Profiles, 'profiles_families');
+  profile: function() {
+    return this.belongsToMany('Profile', 'profiles_families', 'familie_id');
   }
 });
 
-module.exports = db.model('Families', Families);
+module.exports = db.model('Familie', Familie);
