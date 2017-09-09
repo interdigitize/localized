@@ -11,15 +11,13 @@ module.exports.getAll = (req, res) => {
     });
 };
 
-module.exports.getAllFamilyMembers = (req, res) => {
-  console.log('controller hit, req is', req);
+module.exports.getAllByFamilyID = (req, res) => {
   models.Profile.fetchAll()
+  //For now (Sept 9): fetching all profiles b/c we are not pulling in members by family ID yet. We need to add in criterion of retrieving members by family ID.
     .then(profiles => {
-      console.log('[controller] profiles are', profiles);
       res.status(200).send(profiles);
     })
     .catch(err => {
-      // This code indicates an outside service (the database) did not respond in time
       res.status(503).send(err);
     });
 };
