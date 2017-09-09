@@ -171,7 +171,7 @@ const dummydataTwo = {
       type: "jpg",
       created_at: "2017-02-07 18:40:59.201982-05",
       user_id: 15,
-      family_id: 1
+      family_id: 2
     },
     {
       url: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Ed_Norton_Shankbone_Metropolitan_Opera_2009.jpg/220px-Ed_Norton_Shankbone_Metropolitan_Opera_2009.jpg",
@@ -180,7 +180,7 @@ const dummydataTwo = {
       type: "jpg",
       created_at: "2017-05-07 18:40:59.201982-05",
       user_id: 16,
-      family_id: 1
+      family_id: 2
     },
     {
       url: "https://media1.s-nbcnews.com/j/newscms/2017_21/1216209/salma-hayek-hair-today-inline-001-170522_243d723cbe725b08ee6f2022670207b5.today-inline-large.jpg",
@@ -189,7 +189,7 @@ const dummydataTwo = {
       type: "jpg",
       created_at: "2017-03-07 18:40:59.201982-05",
       user_id: 17,
-      family_id: 1
+      family_id: 2
     }
   ]
 };
