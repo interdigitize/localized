@@ -9,7 +9,7 @@ router.route('/')
 ;
 
 router.route('/familymembers')
-  .get(ProfileController.getAllFamilyMembers);
+  .get(ProfileController.getAllByFamilyID);
 
 router.route('/:id')
   .get(ProfileController.getOne)
