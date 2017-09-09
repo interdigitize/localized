@@ -8,7 +8,7 @@ exports.up = function (knex, Promise) {
       table.string('display', 100).nullable();
       table.string('email', 100).nullable().unique();
       table.string('phone', 100).nullable();
-      table.string('avatar', 100).nullable();
+      table.string('avatar', 500).nullable();
       table.timestamps(true, true);
     }),
     knex.schema.createTableIfNotExists('auths', function(table) {
@@ -28,4 +28,3 @@ exports.down = function (knex, Promise) {
     knex.schema.dropTable('profiles')
   ]);
 };
-
