@@ -1,14 +1,14 @@
 const db = require('../');
-const Profiles = require('./');
+const Profile = require('./');
 const Families = require('./');
 
 const Profile_Families = db.Model.extend({
-  tableName: 'profile_families',
+  tableName: 'profiles_families',
   families_id: function() {
-    return this.hasmany(Profiles);
+    return this.hasMany(Families);
   },
   profiles_id: function() {
-    return this.hasMany(Profiles);
+    return this.hasMany(Profile);
   }
 });
 
