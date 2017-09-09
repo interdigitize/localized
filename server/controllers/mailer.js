@@ -17,7 +17,7 @@ module.exports.inviteByEmail = (req, res) => {
     }
   });
 
-  var link = `http://localhost:3000/signup?invitedBy=${fromEmail}&familyid=0`;
+  var link = `http://localhost:3000/signup?invitedBy=${fromEmail}&familyid=0&email=${toEmail}`;
   var email = emailTemplate(link);
 
   var mailOptions = {
