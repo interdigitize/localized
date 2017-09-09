@@ -11,6 +11,19 @@ module.exports.getAll = (req, res) => {
     });
 };
 
+module.exports.getAllFamilyMembers = (req, res) => {
+  console.log('controller hit, req is', req);
+  models.Profile.fetchAll()
+    .then(profiles => {
+      console.log('[controller] profiles are', profiles);
+      res.status(200).send(profiles);
+    })
+    .catch(err => {
+      // This code indicates an outside service (the database) did not respond in time
+      res.status(503).send(err);
+    });
+};
+
 // module.exports.create = (req, res) => {
 //   models.Profile.forge({ username: req.body.username, password: req.body.password })
 //     .save()
