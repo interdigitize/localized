@@ -2,11 +2,16 @@ const models = require('../../db/models');
 const s3 = require('../middleware/s3.js').s3;
 
 module.exports.save = (req, res) => {
-  var filename = req.files[0].originalname.split('.')[0];
-  var key = filename + '_' + Date.now().toString();
-  var userId = req.user.id;
+  //FILE
+  var filename = req.files[0].originalname;
+  var mimetype = req.files[0].mimetype;
+  var title = 'A title...';
+  var description = 'A description...';
+  //AWS
   var region = 'us-west-1';
   var bucket = 'localized-0001';
+  var key = Date.now().toString() + '_' + filename;
+
   var awsLink = `https://s3-${region}.amazonaws.com/localized-0001/${key}`;
 
   var params = {
@@ -22,11 +27,28 @@ module.exports.save = (req, res) => {
       console.log('s3upload controller error:', err);
       res.end();
     } else {
-      console.log('S3 Response:', data);
-      console.log('Uploaded By User:', userId);
       console.log(`Uploaded ${filename} to ${bucket}.`);
-      //Save data somewhere here in order to save it with the e
-      res.end();
+      new models.Posts({
+        url: data.Location,
+        user_id: req.user.id,
+        family_id: 1,
+        type: mimetype,
+        title: title,
+        description: description,
+        etag: data.ETag,
+      })
+        .save()
+        .then((saved) => {
+          console.log('SAVED', saved);
+          res.json({
+            url: saved.attributes.url,
+            title: saved.attributes.title,
+            description: saved.attributes.description,
+          });
+        })
+        .catch((error) => {
+          console.log('There was an error saving the file in the database:', error);
+        });
     }
   });
 };
