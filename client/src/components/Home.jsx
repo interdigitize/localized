@@ -41,6 +41,7 @@ class Home extends React.Component {
       family_id: 1
     };
     this.getAllPostsByFamily = this.getAllPostsByFamily.bind(this);
+    this.getAllFamilyMembers = this.getAllFamilyMembers.bind(this);
   }
 
   getAllPostsByFamily() {
@@ -62,7 +63,23 @@ class Home extends React.Component {
       });
   }
 
+  getAllFamilyMembers() {
+    axios.get('/api/profiles/familymembers')
+    // we need to add in the criterion of family id here!!! Right now it is only pulling in ALL profiles until users are connected w/ family ids. 
+      .then((response) => {
+        if(response.data) {
+          this.setState({
+            familyMembers: response.data
+          });
+        }
+      })
+      .catch((error) => {
+        console.log('[client] display family members error:', error);
+      });
+  }
+
   componentDidMount() {
+    this.getAllFamilyMembers();
     this.getAllPostsByFamily();
   }
 
@@ -70,6 +87,7 @@ class Home extends React.Component {
     return (
       <Layout style={{flexDirection: 'column'}}>
         <Content style={{ background: '#fff', padding: 5 }}>
+          <FamiliesContainer familyImages={this.state.familyMembers} />
         </Content>
         <Content style={{ background: '#f9f9f9', padding: 10 }}>
           <UploadMedia />
