@@ -29,5 +29,12 @@
       "consumerSecret": "TWITTER_CLIENT_SECRET",
       "callbackURL": "TWITTER_CALLBACK_URL"
     }
+  },
+  "mailer": {
+    "user": "MAILER_USER",
+    "clientId": "MAILER_CLIENT_ID",
+    "clientSecret": "MAILER_CLIENT_SECRET",
+    "refreshToken": "MAILER_REFRESH_TOKEN",
+    "accessToken": "MAILER_ACCESS_TOKEN"
   }
 }
