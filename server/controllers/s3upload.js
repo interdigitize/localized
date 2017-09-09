@@ -19,7 +19,7 @@ module.exports.save = (req, res) => {
 
   s3.upload(params, (err, data) => {
     if (err) {
-      console.log(err);
+      console.log('s3upload controller error:', err);
       res.end();
     }
     console.log('S3 Response:', data);
