@@ -1995,17 +1995,6 @@ domutils@^1.5.1:
     dom-serializer "0"
     domelementtype "1"
 
-dotenv-node@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/dotenv-node/-/dotenv-node-0.0.2.tgz#e5fab6489d68bf224d95acab32cbe54b484f9ee7"
-  dependencies:
-    fsreadfileastype "0.0.4"
-    underscore ""
-
-dotenv@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-4.0.0.tgz#864ef1379aced55ce6f95debecdce179f7a0cd1d"
-
 double-ended-queue@^2.1.0-0:
   version "2.1.0-0"
   resolved "https://registry.yarnpkg.com/double-ended-queue/-/double-ended-queue-2.1.0-0.tgz#103d3527fd31528f40188130c841efdd78264e5c"
@@ -2640,13 +2629,6 @@ fsevents@^1.0.0:
   dependencies:
     nan "^2.3.0"
     node-pre-gyp "^0.6.36"
-
-fsreadfileastype@0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/fsreadfileastype/-/fsreadfileastype-0.0.4.tgz#f34e2e86d7d116ddd10c131f16511928e1367012"
-  dependencies:
-    shellvarparser "0.0.3"
-    underscore "1.5.2"
 
 fstream-ignore@^1.0.5:
   version "1.0.5"
@@ -4463,6 +4445,10 @@ node-pre-gyp@^0.6.36:
     tar "^2.2.1"
     tar-pack "^3.4.0"
 
+nodemailer@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-4.1.0.tgz#e3f76bcad7376bae44714552571f5b0674fe469f"
+
 nopt@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/nopt/-/nopt-4.0.1.tgz#d0d4685afd5415193c8c7505602d0d17cd64474d"
@@ -6151,12 +6137,6 @@ shelljs@^0.7.5:
     interpret "^1.0.0"
     rechoir "^0.6.2"
 
-shellvarparser@0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/shellvarparser/-/shellvarparser-0.0.3.tgz#3b5a32e2ef1ae1a13dfd6c73622509e6388f731d"
-  dependencies:
-    underscore "1.5.2"
-
 shellwords@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/shellwords/-/shellwords-0.1.1.tgz#d6b9181c1a48d397324c84871efbcfc73fc0654b"
@@ -6661,13 +6641,9 @@ underscore.string@~2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/underscore.string/-/underscore.string-2.4.0.tgz#8cdd8fbac4e2d2ea1e7e2e8097c42f442280f85b"
 
-underscore@, underscore@^1.7.0:
+underscore@^1.7.0:
   version "1.8.3"
   resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.8.3.tgz#4f3fb53b106e6097fcf9cb4109f2a5e9bdfa5022"
-
-underscore@1.5.2:
-  version "1.5.2"
-  resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.5.2.tgz#1335c5e4f5e6d33bbb4b006ba8c86a00f556de08"
 
 underscore@~1.7.0:
   version "1.7.0"

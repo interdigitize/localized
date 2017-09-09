@@ -40,8 +40,8 @@ module.exports.emailTemplate = function(link) {
           <td width="30" class="spacer">&nbsp;</td>
           <td align="center" class="bodyCopy">
             <h1 style="font-family: Arial, Helvetica, sans-serif; font-size: 32px; color: #404040; margin-top: 0; margin-bottom: 20px; padding: 0; line-height: 135%" class="headline">You've been invited to your family!</h1>
-            <p style="font-family: Arial, Helvetica, sans-serif; color: #555555; font-size: 14px; padding: 0 40px;">Confused? Dont be! You've been chosen to join a family at Localized.
-              An exclusive opportunity that only the most interesting people get offered. What do you have to do, click the link below and be directed to /signup for Localized. Fill out the remaining information and get access to the family you've always dreamt of.</p>
+            <p style="font-family: Arial, Helvetica, sans-serif; color: #555555; font-size: 14px; padding: 0 40px;">Confused? Don't be! You've been chosen to join your family at Localized.
+              An exclusive opportunity that only the most interesting people get offered. Click the link below and create your account at Localized. Fill out the remaining information and get access to the family you've always dreamt of.</p>
             <a href="${link}">Click this link to join your Family</a>
           </td>
           <td width="30" class="spacer">&nbsp;</td>
@@ -67,7 +67,7 @@ module.exports.emailTemplate = function(link) {
             <img src="http://www.rickygipson.com/images/codepen//thumbnails.jpg" class="belowFeatureIMG">
               </div>
             <h3 style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; color: #404040; margin: 0; padding: 0;">What is Localized?</h3>
-            <p style="font-family: Arial, Helvetica, sans-serif; color: #555555; font-size: 13px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper aliquet venenatis. Quisque eu nunc vitae elit eleifend accumsan.</p>
+            <p style="font-family: Arial, Helvetica, sans-serif; color: #555555; font-size: 13px;">Localized is a revolutionary way to keep in touch with your beloved family members.</p>
           </td>
         </tr>
       </table>
@@ -79,7 +79,7 @@ module.exports.emailTemplate = function(link) {
             <img src="http://www.rickygipson.com/images/codepen/thumbnails.jpg" class="belowFeatureIMG">
               </div>
             <h3 style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; color: #404040; margin: 0; padding: 0;">What if I don't want a family?</h3>
-            <p style="font-family: Arial, Helvetica, sans-serif; color: #555555; font-size: 13px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper aliquet venenatis. Quisque eu nunc vitae elit eleifend accumsan.</p>
+            <p style="font-family: Arial, Helvetica, sans-serif; color: #555555; font-size: 13px;">A great man once said: "Mama always said life was like a box of chocolates; you never know what you're gonna get."</p>
           </td>
         </tr>
       </table>
@@ -91,7 +91,7 @@ module.exports.emailTemplate = function(link) {
             <img src="http://www.rickygipson.com/images/codepen/thumbnails.jpg" class="belowFeatureIMG">
               </div>
             <h3 style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; color: #404040; margin: 0; padding: 0;">What we do with your data</h3>
-            <p style="font-family: Arial, Helvetica, sans-serif; color: #555555; font-size: 13px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper aliquet venenatis. Quisque eu nunc vitae elit eleifend accumsan.</p>
+            <p style="font-family: Arial, Helvetica, sans-serif; color: #555555; font-size: 13px;">Your cherished memories are safely stored.</p>
           </td>
         </tr>
       </table>
