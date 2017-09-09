@@ -65,9 +65,9 @@ class Home extends React.Component {
 
   getAllFamilyMembers() {
     axios.get('/api/profiles/familymembers')
-    // we need to add in the criterion of family id here!!! Right now it is only pulling in ALL profiles until users are connected w/ family ids. 
+    // we need to add in the criterion of family id here!!! Right now it is only pulling in ALL profiles until users are connected w/ family ids.
       .then((response) => {
-        if(response.data) {
+        if (response.data) {
           this.setState({
             familyMembers: response.data
           });
