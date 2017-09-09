@@ -9,7 +9,7 @@ module.exports.save = (req, res) => {
   var bucket = 'localized-0001';
   var awsLink = `https://s3-${region}.amazonaws.com/localized-0001/${key}`;
 
-  let params = {
+  var params = {
     ACL: 'public-read',
     Bucket: bucket,
     Key: key,
