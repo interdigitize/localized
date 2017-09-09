@@ -6,6 +6,7 @@ import '../styles.css';
 import FamiliesContainer from './FamiliesContainer.jsx';
 import PostsContainer from './PostsContainer.jsx';
 import UploadMedia from './UploadMedia.jsx';
+import InviteModal from './InviteModal.jsx';
 
 class Navigation extends React.Component {
   constructor(props) {
@@ -63,6 +64,9 @@ class Navigation extends React.Component {
           <Menu.Item key="5">
             <Icon type="heart-o" />
             <span>Favorites</span>
+          </Menu.Item>
+          <Menu.Item>
+            <InviteModal />
           </Menu.Item>
           <Menu.Item key="6">
             <a href="/logout">

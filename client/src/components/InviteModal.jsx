@@ -45,33 +45,32 @@ class InviteModal extends Component {
         fromEmail: email,
         fromFirst: first,
         fromLast: last
-      }
-    })
-    .then((response) => {
-      if(response.data) {
-        this.setState({
-          validateStatus: 'success',
-          modalText: 'Sucesss! Inform your family to check their email for your invite!'
-        });
-      } else {
+      }})
+      .then((response) => {
+        if(response.data) {
+          this.setState({
+            validateStatus: 'success',
+            modalText: 'Sucesss! Inform your family to check their email for your invite!'
+          });
+        } else {
+          this.setState({
+            validateStatus: 'error',
+            modalText: 'Oh no! Something happened, please check your input and try again.'
+          });
+        }
+      })
+      .catch((error) => {
         this.setState({
           validateStatus: 'error',
-          modalText: 'Oh no! Something happened, please check your input and try again.'
+          modalText: 'Oh no. Theres a problem. Please try again.'
         });
-      }
-    })
-    .catch((error) => {
-      this.setState({
-        validateStatus: 'error',
-        modalText: 'Oh no. Theres a problem. Please try again.'
       });
-    });
   }
 
   handleInputChange(e) {
     this.setState({
       emailString: e.target.value
-    })
+    });
   }
 
   render() {
