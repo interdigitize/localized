@@ -20,7 +20,7 @@ class Home extends React.Component {
   }
 
   getAllPostsByFamily() {
-    axios.get('/api/1', {
+    axios.get('/api/postsByFamily', {
       params: {
         family_id: this.state.family_id
       }})
