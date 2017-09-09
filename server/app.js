@@ -27,6 +27,7 @@ app.use('/', routes.auth);
 app.use('/api', routes.api);
 app.use('/api/profiles', routes.profiles);
 app.use('/api/upload', routes.upload);
+app.use('/api/mailer', routes.mailer);
 
 app.get('*', (req, res) => {
   const preloadedState = {};

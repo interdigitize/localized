@@ -6,6 +6,7 @@ import '../styles.css';
 import FamiliesContainer from './FamiliesContainer.jsx';
 import PostsContainer from './PostsContainer.jsx';
 import UploadMedia from './UploadMedia.jsx';
+import InviteModal from './InviteModal.jsx';
 
 class Navigation extends React.Component {
   constructor(props) {
@@ -70,6 +71,7 @@ class Navigation extends React.Component {
               <span>Logout</span>
             </a>
           </Menu.Item>
+          <InviteModal isCollapsed={this.state.collapsed} />
         </Menu>
       </Sider>
     );
