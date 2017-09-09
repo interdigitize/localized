@@ -33,12 +33,12 @@ const dummydataTwo = {
       avatar: "http://static.dnaindia.com/sites/default/files/2016/05/22/462997-arya-stark-in-game-of-thrones-season-6-epiosde-5-the-door.jpg"
     },
     {
-      first: "Kitty",
-      last: "Cat",
-      display: "Kitty",
-      email: "kittycat@gmail.com",
+      first: "Samuel L.",
+      last: "Jackson",
+      display: "Samuel L.",
+      email: "samuelljackson@gmail.com",
       phone: "415742386",
-      avatar: "https://www.petfinder.com/wp-content/uploads/2012/11/91615172-find-a-lump-on-cats-skin-632x475.jpg"
+      avatar: "http://images.indianexpress.com/2016/02/samuelljackson-pulpfiction759.jpg"
     },
     {
       first: "Adele",
@@ -84,9 +84,9 @@ const dummydataTwo = {
       family_id: 1
     },
     {
-      url: "https://www.petfinder.com/wp-content/uploads/2012/11/91615172-find-a-lump-on-cats-skin-632x475.jpg",
-      title: "kittycat",
-      description: "baby",
+      url: "http://images.indianexpress.com/2016/02/samuelljackson-pulpfiction759.jpg",
+      title: "godfather",
+      description: "samuel l.",
       type: "jpg",
       created_at: "2017-07-03 18:56:53.201982-05",
       user_id: 6,
