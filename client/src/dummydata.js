@@ -1,7 +1,7 @@
 const dummydata = {
   profiles: [
     {
-      id: "1",
+      id: 1,
       first: "Cameron",
       last: "Mehrabian",
       display: "cmehrabian",
@@ -10,7 +10,7 @@ const dummydata = {
       avatar: "https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAgxAAAAJDg3N2UwOTkzLWM4MDAtNDQ3Yi04YjNjLWVmODQwYmM1NmUwZg.jpg"
     },
     {
-      id: "2",
+      id: 2,
       first: "Dad",
       last: "",
       display: "dad",
@@ -19,80 +19,186 @@ const dummydata = {
       avatar: "https://accrualnet.cancer.gov/sites/accrualnet.cancer.gov/themes/accrualnet/accrualnet-internals/images/avatars/male/Blue.png"
     },
     {
-      id: "3",
+      id: 3,
       first: "Mom",
       last: "",
       display: "mom",
       email: "cameron.mehrabian+mom@gmail.com",
       phone: "4157443456",
       avatar: "https://accrualnet.cancer.gov/sites/accrualnet.cancer.gov/themes/accrualnet/accrualnet-internals/images/avatars/male/Blue.png"
-    }
+    },
+    {
+      id: 4,
+      first: "Arya",
+      last: "Stark",
+      display: "Arya",
+      email: "aryastark@gmail.com",
+      phone: "4157443986",
+      avatar: "http://static.dnaindia.com/sites/default/files/2016/05/22/462997-arya-stark-in-game-of-thrones-season-6-epiosde-5-the-door.jpg"
+    },
+    {
+      id: 5,
+      first: "Kitty",
+      last: "Cat",
+      display: "Kitty",
+      email: "kittycat@gmail.com",
+      phone: "415742386",
+      avatar: "https://www.petfinder.com/wp-content/uploads/2012/11/91615172-find-a-lump-on-cats-skin-632x475.jpg"
+    },
+    {
+      id: 6,
+      first: "Adele",
+      last: "Atkins",
+      display: "Adele",
+      email: "adeleatkins@gmail.com",
+      phone: "4177903986",
+      avatar: "https://timedotcom.files.wordpress.com/2016/01/time-100-2016-adele-adkins1.jpg?quality=85&w=814"
+    },
+    {
+      id: 7,
+      first: "Hugh",
+      last: "Jackman",
+      display: "Hugh",
+      email: "hughjackman@gmail.com",
+      phone: "9257443986",
+      avatar: "https://vignette3.wikia.nocookie.net/xmenmovies/images/6/6b/Hugh-Jackman.jpg/revision/latest?cb=20120222054319"
+    },
+    {
+      id: 8,
+      first: "Scarlett",
+      last: "Johansson",
+      display: "Scarlett",
+      email: "scarlettj@gmail.com",
+      phone: "8257443986",
+      avatar: "http://akns-images.eonline.com/eol_images/Entire_Site/2017527/rs_600x600-170627125434-600.Scarlett-Johansson-Hair.jl.062717.jpg?downsize=300:*&crop=300:300;left,top"
+    },
+    {
+      id: 9,
+      first: "Jon",
+      last: "Snow",
+      display: "Jon",
+      email: "jonsnow@gmail.com",
+      phone: "4407043086",
+      avatar: "https://static.independent.co.uk/s3fs-public/thumbnails/image/2015/06/15/09/jon-snow.jpg"
+    },
   ],
   posts: [
     {
-      image: "http://static.dnaindia.com/sites/default/files/2016/05/22/462997-arya-stark-in-game-of-thrones-season-6-epiosde-5-the-door.jpg",
+      id: 1,
+      url: "http://static.dnaindia.com/sites/default/files/2016/05/22/462997-arya-stark-in-game-of-thrones-season-6-epiosde-5-the-door.jpg",
       title: "arya",
-      description: "me"
+      description: "me",
+      type: "jpg",
+      created_at: "2017-01-07 18:55:53.201982-05",
+      user_id: 4
     },
     {
-      image: "https://www.petfinder.com/wp-content/uploads/2012/11/91615172-find-a-lump-on-cats-skin-632x475.jpg",
+      id: 2,
+      url: "https://www.petfinder.com/wp-content/uploads/2012/11/91615172-find-a-lump-on-cats-skin-632x475.jpg",
       title: "kittycat",
-      description: "baby"
+      description: "baby",
+      type: "jpg",
+      created_at: "2017-07-03 18:56:53.201982-05",
+      user_id: 5
     },
     {
-      image: "http://www.readersdigest.ca/wp-content/uploads/2011/01/4-ways-cheer-up-depressed-cat.jpg",
-      title: "kitten",
-      description: "smally"
+      id: 3,
+      url: "https://timedotcom.files.wordpress.com/2016/01/time-100-2016-adele-adkins1.jpg?quality=85&w=814",
+      title: "godmother",
+      description: "adele",
+      type: "jpg",
+      created_at: "2017-09-03 18:57:59.201982-05",
+      user_id: 6
     },
     {
-      image: "https://vignette3.wikia.nocookie.net/xmenmovies/images/6/6b/Hugh-Jackman.jpg/revision/latest?cb=20120222054319",
+      id: 4,
+      url: "https://vignette3.wikia.nocookie.net/xmenmovies/images/6/6b/Hugh-Jackman.jpg/revision/latest?cb=20120222054319",
       title: "brother in law",
-      description: "hugh"
+      description: "hugh",
+      type: "jpg",
+      created_at: "2017-09-02 18:58:59.201982-05",
+      user_id: 7
     },
     {
-      image: "http://akns-images.eonline.com/eol_images/Entire_Site/2017527/rs_600x600-170627125434-600.Scarlett-Johansson-Hair.jl.062717.jpg?downsize=300:*&crop=300:300;left,top",
+      id: 5,
+      url: "http://akns-images.eonline.com/eol_images/Entire_Site/2017527/rs_600x600-170627125434-600.Scarlett-Johansson-Hair.jl.062717.jpg?downsize=300:*&crop=300:300;left,top",
       title: "aunt",
-      description: "scarlett"
+      description: "scarlett",
+      type: "jpg",
+      created_at: "2017-09-10 18:40:59.201982-05",
+      user_id: 8
     },
     {
-      image: "https://static.independent.co.uk/s3fs-public/thumbnails/image/2015/06/15/09/jon-snow.jpg",
+      id: 6,
+      url: "https://static.independent.co.uk/s3fs-public/thumbnails/image/2015/06/15/09/jon-snow.jpg",
       title: "cousin",
-      description: "jon"
+      description: "jon",
+      type: "jpg",
+      created_at: "2017-09-06 18:30:59.201982-05",
+      user_id: 9
     },
     {
-      image: "http://michael-fassbender-online.net/wp-content/themes/awake/lib/scripts/timthumb/thumb.php?src=http://michael-fassbender-online.net/wp-content/uploads/2015/08/MF-Tux.jpg&w=980&h=420&zc=1&q=100",
+      id: 7,
+      url: "http://michael-fassbender-online.net/wp-content/themes/awake/lib/scripts/timthumb/thumb.php?src=http://michael-fassbender-online.net/wp-content/uploads/2015/08/MF-Tux.jpg&w=980&h=420&zc=1&q=100",
       title: "uncle",
-      description: "michael"
+      description: "michael",
+      type: "jpg",
+      created_at: "2017-10-02 19:40:59.201982-05",
+      user_id: 10
     },
     {
-      image: "http://www.star2.com/wp-content/uploads/2016/03/harry_shum_jr_a_p-e1431739786837-770x470.jpg",
+      id: 8,
+      url: "http://www.star2.com/wp-content/uploads/2016/03/harry_shum_jr_a_p-e1431739786837-770x470.jpg",
       title: "brother",
-      description: "harry"
+      description: "harry",
+      type: "jpg",
+      created_at: "2017-03-07 18:40:59.201982-05",
+      user_id: 11
     },
     {
-      image: "https://upload.wikimedia.org/wikipedia/commons/9/99/Kate_Winslet_at_The_Dressmaker_event_TIFF_%28headshot%29.jpg",
+      id: 9,
+      url: "https://upload.wikimedia.org/wikipedia/commons/9/99/Kate_Winslet_at_The_Dressmaker_event_TIFF_%28headshot%29.jpg",
       title: "stepsister",
-      description: "kate"
+      description: "kate",
+      type: "jpg",
+      created_at: "2017-06-07 18:40:59.201982-05",
+      user_id: 12
     },
     {
-      image: "http://www.trbimg.com/img-586555ff/turbine/la-en-st-1229-issa-rae-20161228",
+      id: 10,
+      url: "http://www.trbimg.com/img-586555ff/turbine/la-en-st-1229-issa-rae-20161228",
       title: "sister",
-      description: "issa"
+      description: "issa",
+      type: "jpg",
+      created_at: "2017-07-07 18:40:59.201982-05",
+      user_id: 13
     },
     {
-      image: "https://i.pinimg.com/736x/e2/e1/c9/e2e1c923f41b3cd650141a68745c434f--eva-mendes-style-prom-hairstyles.jpg",
+      id: 11,
+      url: "https://i.pinimg.com/736x/e2/e1/c9/e2e1c923f41b3cd650141a68745c434f--eva-mendes-style-prom-hairstyles.jpg",
       title: "wife",
-      description: "eva"
+      description: "eva",
+      type: "jpg",
+      created_at: "2017-02-07 18:40:59.201982-05",
+      user_id: 14
     },
     {
-      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Ed_Norton_Shankbone_Metropolitan_Opera_2009.jpg/220px-Ed_Norton_Shankbone_Metropolitan_Opera_2009.jpg",
+      id: 12,
+      url: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Ed_Norton_Shankbone_Metropolitan_Opera_2009.jpg/220px-Ed_Norton_Shankbone_Metropolitan_Opera_2009.jpg",
       title: "brother",
-      description: "ed"
+      description: "ed",
+      type: "jpg",
+      created_at: "2017-05-07 18:40:59.201982-05",
+      user_id: 15
     },
     {
-      image: "https://media1.s-nbcnews.com/j/newscms/2017_21/1216209/salma-hayek-hair-today-inline-001-170522_243d723cbe725b08ee6f2022670207b5.today-inline-large.jpg",
+      id: 13,
+      url: "https://media1.s-nbcnews.com/j/newscms/2017_21/1216209/salma-hayek-hair-today-inline-001-170522_243d723cbe725b08ee6f2022670207b5.today-inline-large.jpg",
       title: "sister",
-      description: "selma"
+      description: "selma",
+      type: "jpg",
+      created_at: "2017-03-07 18:40:59.201982-05",
+      user_id: 16
     }
   ]
 };
