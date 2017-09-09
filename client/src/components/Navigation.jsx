@@ -65,15 +65,13 @@ class Navigation extends React.Component {
             <Icon type="heart-o" />
             <span>Favorites</span>
           </Menu.Item>
-          <Menu.Item>
-            <InviteModal />
-          </Menu.Item>
           <Menu.Item key="6">
             <a href="/logout">
               <Icon type="logout"/>
               <span>Logout</span>
             </a>
           </Menu.Item>
+          <InviteModal isCollapsed={this.state.collapsed} />
         </Menu>
       </Sider>
     );

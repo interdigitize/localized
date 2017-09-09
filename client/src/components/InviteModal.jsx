@@ -11,12 +11,21 @@ class InviteModal extends Component {
       okText: 'Invite',
       emailString: '',
       validateStatus: '',
+      btnText: 'Invite your Family',
       modalText: "Enter a family member's email here. They will get an invite link to your family!"
     };
     this.showModal = this.showModal.bind(this);
     this.handleOk = this.handleOk.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    if (window.innerWidth < 768) {
+      this.setState({
+        btnText: '++'
+      });
+    }
   }
 
   showModal() {
@@ -86,10 +95,10 @@ class InviteModal extends Component {
       },
     };
     return (
-      <div id='invite-modal'>
-        <Button type="primary" onClick={this.showModal}>Invite your Family</Button>
+      <div id='invite-modal' style={{ textAlign: 'center'}}>
+        <Button type="primary" onClick={this.showModal}>{this.props.isCollapsed ? '++' : 'Invite your Family'}</Button>
         <Modal
-          title="Title"
+          title="Invite by Email"
           visible={visible}
           onOk={this.handleSubmit}
           okText={this.state.okText}
@@ -100,8 +109,7 @@ class InviteModal extends Component {
             <FormItem
               {...formItemLayout}
               hasFeedback
-              validateStatus={this.state.validateStatus}
-              help="">
+              validateStatus={this.state.validateStatus}>
               <Input placeholder="dad@myfamily.com" id="validating" onChange={this.handleInputChange} />
             </FormItem>
           </Form>
