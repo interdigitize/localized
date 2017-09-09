@@ -37,10 +37,10 @@ router.route('/:family_id')
 // });
 
 
-router.route('/:family_id')
+router.route('/postsByFamily')
   .get((req, res) => {
     Posts
-      .where('family_id', req.params.family_id)
+      .where('family_id', req.query.family_id)
       .fetchAll()
       .then((contacts) => {
         res.json({contacts});
