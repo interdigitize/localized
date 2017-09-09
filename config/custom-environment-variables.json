@@ -1,4 +1,10 @@
 {
+  "AWS": {
+    "s3" : {
+      "assessKeyId": "S3_ACCESS_KEY_ID",
+      "secretAccessKey": "S3_SECRET_ACCESS_KEY"
+    }
+  },
   "knex": {
     "connection": "DATABASE_URL"
   },
