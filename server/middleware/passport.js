@@ -31,8 +31,7 @@ passport.use('local-signup', new LocalStrategy({
   usernameField: 'email',
   passwordField: 'password',
   passReqToCallback: true
-},
-  (req, email, password, done) => {
+}, (req, email, password, done) => {
     // check to see if there is any account with this email address
     return models.Profile.where({ email }).fetch()
       .then(profile => {
@@ -156,7 +155,8 @@ const getOrCreateOAuthProfile = (type, oauthProfile, done) => {
         first: oauthProfile.name.givenName,
         last: oauthProfile.name.familyName,
         display: oauthProfile.displayName || `${oauthProfile.name.givenName} ${oauthProfile.name.familyName}`,
-        email: oauthProfile.emails[0].value
+        email: oauthProfile.emails[0].value,
+        avatar: oauthProfile.photos[0].value
       };
 
       if (profile) {
