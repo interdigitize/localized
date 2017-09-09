@@ -4,7 +4,7 @@ const Profile = require('./');
 const Familie = db.Model.extend({
   tableName: 'families',
   profile: function() {
-    return this.belongsToMany('Profile', 'profiles_families', 'familie_id');
+    return this.belongsToMany('Profile', 'profiles_families');
   }
 });
 
