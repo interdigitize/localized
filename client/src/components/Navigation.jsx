@@ -7,6 +7,7 @@ import FamiliesContainer from './FamiliesContainer.jsx';
 import PostsContainer from './PostsContainer.jsx';
 import UploadMedia from './UploadMedia.jsx';
 import InviteModal from './InviteModal.jsx';
+import { Avatar } from 'antd';
 
 class Navigation extends React.Component {
   constructor(props) {
@@ -32,6 +33,7 @@ class Navigation extends React.Component {
   }
 
   render() {
+    const { first, avatar } = __PRELOADED_STATE__.user;
     return (
       <Sider
         trigger={null}
@@ -39,15 +41,10 @@ class Navigation extends React.Component {
         collapsed={this.state.collapsed}
       >
         <div className="logo" />
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+        <Menu theme="dark" mode="inline">
           <Menu.Item key="1">
-            <Icon
-              className="trigger"
-              type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
-              onClick={this.toggle}/>
-            <span className="trigger"
-              type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
-              onClick={this.toggle}>Expand/Collapse</span>
+            <Avatar src={avatar}/>
+            <span>{first}</span>
           </Menu.Item>
           <Menu.Item key="2">
             <Icon type="home" />
@@ -72,6 +69,15 @@ class Navigation extends React.Component {
             </a>
           </Menu.Item>
           <InviteModal isCollapsed={this.state.collapsed} />
+          <Menu.Item key="7">
+            <Icon
+              className="trigger"
+              type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
+              onClick={this.toggle}/>
+            <span className="trigger"
+              type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
+              onClick={this.toggle}>Expand/Collapse</span>
+          </Menu.Item>
         </Menu>
       </Sider>
     );
