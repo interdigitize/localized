@@ -37,6 +37,19 @@ router.route('/:family_id')
 // });
 
 
+router.route('/:family_id')
+  .get((req, res) => {
+    Posts
+      .where('family_id', req.params.family_id)
+      .fetchAll()
+      .then((contacts) => {
+        res.json({contacts});
+      })
+      .catch((error) => {
+        console.log('[server] get posts error', error);
+      });
+  });
+
 router.route('/:id')
   .put((req, res) => {
     Posts
