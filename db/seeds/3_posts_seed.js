@@ -17,7 +17,8 @@ const createPosts = (knex, post) => {
         title: post.title,
         description: post.description,
         type: post.type,
-        user_id: post.user_id
+        user_id: post.user_id,
+        family_id: post.family_id
       }
     );
 };
