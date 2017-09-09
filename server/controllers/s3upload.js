@@ -21,11 +21,12 @@ module.exports.save = (req, res) => {
     if (err) {
       console.log('s3upload controller error:', err);
       res.end();
+    } else {
+      console.log('S3 Response:', data);
+      console.log('Uploaded By User:', userId);
+      console.log(`Uploaded ${filename} to ${bucket}.`);
+      //Save data somewhere here in order to save it with the e
+      res.end();
     }
-    console.log('S3 Response:', data);
-    console.log('Uploaded By User:', userId);
-    console.log(`Uploaded ${filename} to ${bucket}.`);
-    res.end();
-    //Save data somewhere here in order to save it with the e
   });
 };
