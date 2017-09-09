@@ -22,7 +22,7 @@ module.exports.inviteByEmail = (req, res) => {
 
   var mailOptions = {
     from: `${fromFirst} <${fromEmail}>`,
-    to: `${fromEmail}`,
+    to: `${toEmail}`,
     subject: `Join your family!`,
     html: `${email}`
   };
