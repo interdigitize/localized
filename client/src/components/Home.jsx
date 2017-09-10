@@ -58,7 +58,7 @@ class Home extends React.Component {
 
   updatePosts(postInfo) {
     var arr = this.state.posts;
-    arr.push(postInfo);
+    arr.unshift(postInfo);
     this.setState({
       posts: arr
     });
