@@ -49,13 +49,14 @@ passport.use('local-signup', new LocalStrategy({
       return profile;
     })
     .tap(profile => {
+      console.log(req.body);
       // associate user to family if family_id is present
-      if (req.body.family_id) {
-        models.Familie.where({ 'id': req.body.family_id }).fetch().then((familie) => {
+      if (req.body.family_id === '' || req.body.family_id === 'undefined') {
+        models.Familie.forge().save().then(familie => {
           profile.families().attach(familie);
         });
       } else {
-        models.Familie.forge().save().then(familie => {
+        models.Familie.where({ 'id': req.body.family_id }).fetch().then((familie) => {
           profile.families().attach(familie);
         });
       }
