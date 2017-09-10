@@ -7,7 +7,7 @@ class Uploader extends React.Component {
     super(props);
     this.state = {
       file: null,
-      processing: false
+      processing: false,
     };
     this.handleFile = this.handleFile.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,8 +24,8 @@ class Uploader extends React.Component {
         this.setState({
           processing: false
         });
-        console.log('upload response ---->>', res);
-        console.log('POST RES from uploadMedia: upload successfully.');
+        this.props.updatePosts(res.data);
+        console.log('file was uploaded successfully.');
       })
       .catch(err => {
         this.setState({
