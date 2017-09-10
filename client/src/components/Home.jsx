@@ -10,13 +10,13 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      newPost: {},
       posts: [],
       familyMembers: [],
       family_id: 1
     };
     this.getAllPostsByFamily = this.getAllPostsByFamily.bind(this);
     this.getAllFamilyMembers = this.getAllFamilyMembers.bind(this);
+    this.updatePosts = this.updatePosts.bind(this);
   }
 
   getAllPostsByFamily() {
@@ -56,6 +56,14 @@ class Home extends React.Component {
     this.getAllPostsByFamily();
   }
 
+  updatePosts(postInfo) {
+    var arr = this.state.posts;
+    arr.push(postInfo);
+    this.setState({
+      posts: arr
+    });
+  }
+
   render() {
     console.log('this.state.family_id is', this.state.family_id);
     return (
@@ -64,7 +72,7 @@ class Home extends React.Component {
           <FamiliesContainer familyImages={this.state.familyMembers} />
         </Content>
         <Content style={{ background: '#f9f9f9', padding: 10 }}>
-          <UploadMedia />
+          <UploadMedia updatePosts={this.updatePosts} />
         </Content>
         <Content style={{background: '#f1f1f1', padding: 5, minHeight: 800}}>
           <PostsContainer posts={this.state.posts}/>
