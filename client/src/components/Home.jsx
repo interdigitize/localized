@@ -20,7 +20,7 @@ class Home extends React.Component {
   }
 
   getAllPostsByFamily() {
-    axios.get('/api/postsByFamily', {
+    axios.get('/api/postsByFamily/', {
       params: {
         family_id: this.state.family_id
       }})
@@ -57,6 +57,7 @@ class Home extends React.Component {
   }
 
   render() {
+    console.log('this.state.family_id is', this.state.family_id);
     return (
       <Layout style={{flexDirection: 'column'}}>
         <Content style={{ background: '#fff', padding: 5 }}>
