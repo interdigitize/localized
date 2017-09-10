@@ -11,6 +11,17 @@ module.exports.getAll = (req, res) => {
     });
 };
 
+module.exports.getAllByFamilyID = (req, res) => {
+  models.Profile.fetchAll()
+  //For now (Sept 9): fetching all profiles b/c we are not pulling in members by family ID yet. We need to add in criterion of retrieving members by family ID.
+    .then(profiles => {
+      res.status(200).send(profiles);
+    })
+    .catch(err => {
+      res.status(503).send(err);
+    });
+};
+
 // module.exports.create = (req, res) => {
 //   models.Profile.forge({ username: req.body.username, password: req.body.password })
 //     .save()
