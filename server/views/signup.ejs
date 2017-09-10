@@ -19,7 +19,7 @@
                 <label>Password</label>
                 <input type="password" class="form-control" name="password">
             </div>
-
+            <input type="hidden" value="" name="family_id" />
             <button type="submit" class="btn btn-warning btn-lg">Signup</button>
         </form>
 
@@ -36,5 +36,21 @@
         <p>Or go <a href="/">home</a>.</p>
 
     </div>
+
+    <script type="text/javascript">
+      var queryString = document.location.search,
+          queryStringParams = {};
+      if (queryString) {
+        document.location.search.substr(1).split('&')
+          .forEach((param) => {
+            var keyValues = param.split('=');
+            queryStringParams[keyValues[0]] = keyValues[1];
+          });
+        if(queryStringParams['email']) {
+          document.getElementsByName('email')[0].value = queryStringParams['email'];
+        }
+        document.getElementsByName('family_id')[0].value = queryStringParams['familyid'];
+      }
+    </script>
 
 <% include foot.ejs%>
