@@ -4,6 +4,6 @@ const router = express.Router();
 const Posts = require('../controllers').Posts;
 
 router.route('/')
-  //.get(Posts);
+  .put(Posts.update);
 
 module.exports = router;
