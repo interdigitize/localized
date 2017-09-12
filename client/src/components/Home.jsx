@@ -72,8 +72,13 @@ class Home extends React.Component {
 
   updatePostTitle(info) {
     var title = info.target.textContent;
+    console.log('title:', title);
     var post_id = info.target.getAttribute('id');
-    axios.get('/api/posts/' + post_id)
+    console.log('post_id is', post_id);
+    axios.put('/api/posts/', {
+      params: {
+        id: post_id
+      }})
       .then((response) => {
         if (response.data) {
           this.setState({
@@ -84,6 +89,10 @@ class Home extends React.Component {
       .catch((error) => {
         console.log('[Client] Save post title error:', error);
       });
+  }
+
+  updatePostDescription() {
+    console.log('to be filled in');
   }
 
   render() {
