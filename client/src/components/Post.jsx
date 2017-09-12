@@ -2,6 +2,8 @@ import React from 'react';
 import { Card } from 'antd';
 
 const Post = (props) => {
+
+  var tagType;
   const poster = props.post.user_id;
   const { id } = __PRELOADED_STATE__.user;
   // Below removes the contentEditable warning in the console that a component is contentEditable.
@@ -14,10 +16,18 @@ const Post = (props) => {
     };
   })();
 
+  if (props.post.type === 'audio/mp3' || props.post.type === 'audio/x-m4a' || props.post.type === 'audio/ogg' || props.post.type === 'audio/wav') {
+    tagType = (<div><audio className="custom-image" controls><source src={props.post.url} type={props.post.type}/> </audio></div>);
+  } else if (props.post.type === 'video/mp4' || props.post.type === 'video/webm' || props.post.type === 'video/ogg') {
+    tagType = (<div><video className="custom-image" controls><source src={props.post.url} type={props.post.type}/> </video></div>);
+  } else {
+    tagType = (<div className="custom-image" style={{backgroundImage: `url(${props.post.url})`}}></div>);
+  }
+
   return (
     <div>
       <Card style={{ width: 300}} bodyStyle={{ padding: 15 }}>
-        <div className="custom-image" style={{backgroundImage: `url(${props.post.url})`}}></div>
+        {tagType}
         <div className="custom-card">
           <div contentEditable={poster === id} id={props.post.id} onInput={props.updatePostTitle}><h5>{props.post.title}</h5></div>
           <div contentEditable={poster === id} id={props.post.id} onInput={props.updatePostDescription}><p>{props.post.description}</p></div>
