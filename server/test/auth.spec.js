@@ -79,7 +79,8 @@ describe('Authentication', () => {
       let request = httpMocks.createRequest({
         body: {
           email: 'TestUser4@mail.com',
-          password: '101112'
+          password: '101112',
+          family_id: 1,
         }
       });
       request.flash = fakeFlash;

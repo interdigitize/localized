@@ -4,6 +4,21 @@
       "database": "thesis_test"
     }
   },
+  
+  "mailer": {
+    "user": "FILL_ME_IN",
+    "clientId": "FILL_ME_IN",
+    "clientSecret": "FILL_ME_IN",
+    "refreshToken": "FILL_ME_IN",
+    "accessToken": "FILL_ME_IN"
+  },
+
+    "AWS": {
+      "s3" : {
+        "accessKeyId": "FILL_ME_IN",
+        "secretAccessKey": "FILL_ME_IN"
+      }
+  },
 
   "passport": {
     "Google": {

@@ -13,7 +13,7 @@ exports.up = function (knex, Promise) {
       table.timestamp('created_at').defaultTo(knex.fn.now());
       table.timestamp('updated_at').defaultTo(knex.fn.now());
     }),
-    knex.schema.createTableIfNotExists('profiles_families', (table) => {
+    knex.schema.createTableIfNotExists('families_profiles', (table) => {
       table.increments('id').unsigned().primary();
       table.integer('family_id').references('families.id').onDelete('CASCADE');
       table.integer('profile_id').references('profiles.id').onDelete('CASCADE');
@@ -46,7 +46,7 @@ exports.up = function (knex, Promise) {
 exports.down = function (knex, Promise) {
   return Promise.all([
     knex.schema.dropTable('auths'),
-    knex.schema.dropTable('profiles_families'),
+    knex.schema.dropTable('families_profiles'),
     knex.schema.dropTable('profiles'),
     knex.schema.dropTable('families'),
     knex.schema.dropTable('posts'),
