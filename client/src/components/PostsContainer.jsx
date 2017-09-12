@@ -4,10 +4,10 @@ import { Row, Col } from 'antd';
 
 const PostsContainer = (props) => (
   <div>
-  The Vault
+  My Family's Posts
     <div>
       {props.posts.map((post, i) => (
-        <Col sm={12} md={8} lg={6} xl={4} key={i}> <Post post={post}/> </Col>
+        <Col sm={12} md={8} lg={6} xl={4} key={i}> <Post post={post} savePostTitle={props.savePostTitle} savePostDescription={props.savePostDescription}/> </Col>
       ))}
     </div>
   </div>
