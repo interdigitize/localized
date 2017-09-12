@@ -5,7 +5,7 @@
     "postinstall": "curl -s https://raw.githubusercontent.com/reactorcore/pomander/master/bin/install | bash",
     "start": "nodemon server",
     "migrate": "knex migrate:latest",
-    "test": "NODE_ENV=test mocha ./server --recursive && mocha ./db --recursive && jest --testPathPattern ./__test__/",
+    "test": "mocha ./server --recursive && mocha ./db --recursive && jest --testPathPattern ./__test__/",
     "test-server": "mocha ./server --recursive",
     "test-db": "NODE_ENV=test mocha ./db --recursive",
     "test-frontend": "jest --testPathPattern ./__test__/",
