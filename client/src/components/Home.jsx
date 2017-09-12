@@ -2,9 +2,10 @@ import React from 'react';
 import FamiliesContainer from './FamiliesContainer.jsx';
 import PostsContainer from './PostsContainer.jsx';
 import UploadMedia from './UploadMedia.jsx';
-import { Layout } from 'antd';
-const { Header, Sider, Content } = Layout;
 import axios from 'axios';
+import { HomeLayout, FamilyMemberLayout, PostLayout } from '../styles/styled-components';
+import { Layout } from 'antd';
+const { Content } = Layout;
 
 class Home extends React.Component {
   constructor(props) {
@@ -67,17 +68,17 @@ class Home extends React.Component {
   render() {
     console.log('this.state.family_id is', this.state.family_id);
     return (
-      <Layout style={{flexDirection: 'column'}}>
-        <Content style={{ background: '#fff', padding: 5 }}>
+      <HomeLayout>
+        <FamilyMemberLayout>
           <FamiliesContainer familyImages={this.state.familyMembers} />
-        </Content>
+        </FamilyMemberLayout>
         <Content style={{ background: '#f9f9f9', padding: 10 }}>
           <UploadMedia updatePosts={this.updatePosts} />
         </Content>
-        <Content style={{background: '#f1f1f1', padding: 5, minHeight: 800}}>
+        <PostLayout>
           <PostsContainer posts={this.state.posts}/>
-        </Content>
-      </Layout>
+        </PostLayout>
+      </HomeLayout>
     );
   }
 }

@@ -8,6 +8,7 @@ import PostsContainer from './PostsContainer.jsx';
 import UploadMedia from './UploadMedia.jsx';
 import InviteModal from './InviteModal.jsx';
 import { Avatar } from 'antd';
+import { AvatarMenuItem } from '../styles/styled-components';
 
 class Navigation extends React.Component {
   constructor(props) {
@@ -42,10 +43,10 @@ class Navigation extends React.Component {
       >
         <div className="logo" />
         <Menu theme="dark" mode="inline">
-          <Menu.Item key="1">
+          <AvatarMenuItem isCollapsed={this.state.collapsed} key="1">
             <Avatar src={avatar}/>
             <span>{first}</span>
-          </Menu.Item>
+          </AvatarMenuItem>
           <Menu.Item key="2">
             <Icon type="home" />
             <span>Home</span>

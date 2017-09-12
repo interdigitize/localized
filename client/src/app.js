@@ -4,6 +4,8 @@ import Index from './Index.jsx';
 import { LocaleProvider } from 'antd';
 import enUS from 'antd/lib/locale-provider/en_US';
 import { BrowserRouter } from 'react-router-dom';
+import styled, { injectGlobal } from 'styled-components';
+import './styles/global-styles.js';
 
 ReactDOM.render(
   <BrowserRouter>
