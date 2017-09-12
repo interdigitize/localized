@@ -3,7 +3,6 @@ config/development.json
 config/production.json
 config/staging.json
 config/s3.json
-config/test.json
 
 
 # OS X
