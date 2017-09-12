@@ -16,10 +16,25 @@ const Post = (props) => {
     };
   })();
 
-  if (props.post.type === 'audio/mp3' || props.post.type === 'audio/x-m4a' || props.post.type === 'audio/ogg' || props.post.type === 'audio/wav') {
-    tagType = (<div><audio className="custom-image" controls><source src={props.post.url} type={props.post.type}/> </audio></div>);
-  } else if (props.post.type === 'video/mp4' || props.post.type === 'video/webm' || props.post.type === 'video/ogg') {
-    tagType = (<div><video className="custom-image" controls><source src={props.post.url} type={props.post.type}/> </video></div>);
+  if (
+    props.post.type === 'audio/mp3' ||
+    props.post.type === 'audio/x-m4a' ||
+    props.post.type === 'audio/ogg' ||
+    props.post.type === 'audio/wav') {
+    tagType = (
+      <audio className="custom-image" controls>
+        <source src={props.post.url} type={props.post.type}/>
+      </audio>
+    );
+  } else if (
+    props.post.type === 'video/mp4' ||
+    props.post.type === 'video/webm' ||
+    props.post.type === 'video/ogg') {
+    tagType = (
+      <video className="custom-image" controls>
+        <source src={props.post.url} type={props.post.type}/>
+      </video>
+    );
   } else {
     tagType = (<div className="custom-image" style={{backgroundImage: `url(${props.post.url})`}}></div>);
   }
