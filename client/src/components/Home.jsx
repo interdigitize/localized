@@ -72,7 +72,8 @@ class Home extends React.Component {
 
   savePostTitle(info) {
     var title = info.target.textContent;
-    axios.get('/api/posts')
+    var post_id = info.target.getAttribute('id');
+    axios.get('/api/posts/' + post_id)
       .then((response) => {
         if (response.data) {
           this.setState({
@@ -81,7 +82,7 @@ class Home extends React.Component {
         }
       })
       .catch((error) => {
-        console.log('[client] save title error:', error);
+        console.log('[Client] Save post title error:', error);
       });
   }
 
