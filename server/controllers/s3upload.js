@@ -44,7 +44,9 @@ module.exports.save = (req, res) => {
             title: saved.attributes.title,
             description: saved.attributes.description,
             id: saved.id,
-            user_id: saved.attributes.user_id
+            user_id: saved.attributes.user_id,
+            type: saved.attributes.type,
+
           });
         })
         .catch((error) => {
