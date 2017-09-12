@@ -6,7 +6,9 @@
     }
   },
   "knex": {
-    "connection": "DATABASE_URL"
+    "connection": {
+      "database": "TEST_DATABASE_NAME"
+    }
   },
   "redis": {
     "connection": "REDIS_URL"
