@@ -13,11 +13,16 @@ class Home extends React.Component {
     this.state = {
       posts: [],
       familyMembers: [],
-      family_id: 1
+      family_id: 1,
+      editedContent: false,
+      title: '',
+      description: ''
     };
     this.getAllPostsByFamily = this.getAllPostsByFamily.bind(this);
     this.getAllFamilyMembers = this.getAllFamilyMembers.bind(this);
     this.updatePosts = this.updatePosts.bind(this);
+    this.savePostTitle = this.savePostTitle.bind(this);
+    this.savePostDescription = this.savePostDescription.bind(this);
   }
 
   getAllPostsByFamily() {
@@ -65,8 +70,23 @@ class Home extends React.Component {
     });
   }
 
+  savePostTitle(info) {
+    var title = info.target.textContent;
+    axios.get('/api/posts')
+      .then((response) => {
+        if (response.data) {
+          this.setState({
+            title: response.data
+          });
+        }
+      })
+      .catch((error) => {
+        console.log('[client] save title error:', error);
+      });
+  }
+
   render() {
-    console.log('this.state.family_id is', this.state.family_id);
+    // console.log('this.state.family_id is', this.state.family_id);
     return (
       <HomeLayout>
         <FamilyMemberLayout>
