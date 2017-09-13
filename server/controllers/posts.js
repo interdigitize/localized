@@ -6,7 +6,7 @@ module.exports.update = (req, res) => {
       if (!post) {
         throw post;
       }
-      post.set('title', req.body.params.title);
+      post.set(req.body.params.type, req.body.params.title);
       return post.save();
     })
     .then(() => {
