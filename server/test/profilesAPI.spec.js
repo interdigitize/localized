@@ -24,7 +24,7 @@ describe('Profiles API', function () {
         };
       })
       .expect(200, {
-        length: 10
+        length: 17
       })
       .end(done);
   });
