@@ -13,10 +13,7 @@ class Home extends React.Component {
     this.state = {
       posts: [],
       familyMembers: [],
-      family_id: 1,
-      editedContent: false,
-      title: '',
-      description: ''
+      family_id: 1
     };
     this.getAllPostsByFamily = this.getAllPostsByFamily.bind(this);
     this.getAllFamilyMembers = this.getAllFamilyMembers.bind(this);
@@ -53,7 +50,7 @@ class Home extends React.Component {
         }
       })
       .catch((error) => {
-        console.log('[client] display family members error:', error);
+        console.log('[Client] display family members error:', error);
       });
   }
 
