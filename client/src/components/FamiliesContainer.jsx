@@ -5,8 +5,10 @@ import { FamiliesHeader, FamilyImages, AddFamilyContainer } from '../styles/styl
 
 const FamiliesContainer = (props) => (
   <FamiliesHeader>
-    <span>My Family</span>
-    <Family members={props.familyImages} />
+    <span contentEditable={true} onInput={props.updateFamilyName}>{props.familyName}</span>
+    <FamilyImages>
+      <Family members={props.familyImages} />
+    </FamilyImages>
     <AddFamilyContainer>
       <AddFamily />
     </AddFamilyContainer>
