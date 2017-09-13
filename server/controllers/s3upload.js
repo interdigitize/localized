@@ -39,11 +39,11 @@ module.exports.save = (req, res) => {
       })
         .save()
         .then((saved) => {
-          console.log('SAVED', saved);
           res.json({
             url: saved.attributes.url,
             title: saved.attributes.title,
             description: saved.attributes.description,
+            id: saved.id
           });
         })
         .catch((error) => {
