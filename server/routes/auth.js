@@ -1,14 +1,25 @@
 const express = require('express');
 const middleware = require('../middleware');
-
+const db = require('../../db');
 const router = express.Router();
 
 router.route('/')
   .get(middleware.auth.verify, (req, res) => {
     const preloadedState = {};
     preloadedState.user = req.user;
-    // grab other relevant user data
-    res.render('index.ejs', { preloadedState });
+
+    Promise.all([db.knex('families_profiles').where('profile_id', req.user.id)])
+      .then((results) => {
+        // NOTE: Only returning first family_id entry, may return multiple families eventuall
+        const f_id = results[0][0].family_id || 0;
+        preloadedState.family_id = f_id;
+      })
+      .then(() => {
+        res.render('index.ejs', { preloadedState });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   });
 
 router.route('/login')
