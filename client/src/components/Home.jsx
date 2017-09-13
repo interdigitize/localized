@@ -13,7 +13,7 @@ class Home extends React.Component {
     this.state = {
       posts: [],
       familyMembers: [],
-      family_id: 1
+      family_id: __PRELOADED_STATE__.family_id
     };
     this.getAllPostsByFamily = this.getAllPostsByFamily.bind(this);
     this.getAllFamilyMembers = this.getAllFamilyMembers.bind(this);
