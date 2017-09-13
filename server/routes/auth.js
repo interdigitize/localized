@@ -10,7 +10,7 @@ router.route('/')
 
     Promise.all([db.knex('families_profiles').where('profile_id', req.user.id)])
       .then((results) => {
-        // NOTE: Only returning first family_id entry, may return multiple families eventually
+        // NOTE: currently only returns the first family_id, may return multiple families eventually
         const f_id = results[0][0].family_id || 0;
         preloadedState.family_id = f_id;
       })
