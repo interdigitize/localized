@@ -80,7 +80,7 @@ class Home extends React.Component {
       }})
       .then((response) => {
         if (response.data) {
-          console.log('[Client] Successful update');
+          console.log('[Client] Successful post title update');
         }
       })
       .catch((error) => {
@@ -89,11 +89,24 @@ class Home extends React.Component {
   }
 
   updatePostDescription(info) {
-    console.log('to be filled in');
+    var description = info.target.textContent;
+    var post_id = info.target.getAttribute('id');
+    axios.put(`/api/posts/${post_id}`, {
+      params: {
+        description: description,
+        type: 'description'
+      }})
+      .then((response) => {
+        if (response.data) {
+          console.log('[Client] Successful post description update');
+        }
+      })
+      .catch((error) => {
+        console.log('[Client] Save post title error:', error);
+      });
   }
 
   render() {
-    // console.log('this.state.family_id is', this.state.family_id);
     return (
       <HomeLayout>
         <FamilyMemberLayout>
