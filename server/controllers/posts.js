@@ -1,14 +1,13 @@
 const models = require('../../db/models');
 
 module.exports.update = (req, res) => {
-  console.log('UPDATE HIT!!!!');
-  console.log('client req.body is', req.body);
-  models.Posts.where({ id: req.params.id }).fetch()
+  models.Posts.where({ id: req.params.post_id }).fetch()
     .then(post => {
       if (!post) {
         throw post;
       }
-      return post.save(req.body, { method: 'update' });
+      post.set('title', req.body.params.title);
+      return post.save();
     })
     .then(() => {
       res.sendStatus(201);
