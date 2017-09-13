@@ -22,7 +22,7 @@ class Home extends React.Component {
     this.getAllFamilyMembers = this.getAllFamilyMembers.bind(this);
     this.updatePosts = this.updatePosts.bind(this);
     this.updatePostTitle = this.updatePostTitle.bind(this);
-    this.savePostDescription = this.savePostDescription.bind(this);
+    this.updatePostDescription = this.updatePostDescription.bind(this);
   }
 
   getAllPostsByFamily() {
@@ -97,7 +97,7 @@ class Home extends React.Component {
           <UploadMedia updatePosts={this.updatePosts} />
         </Content>
         <PostLayout>
-          <PostsContainer posts={this.state.posts}/>
+          <PostsContainer posts={this.state.posts} updatePostTitle={this.updatePostTitle} updatePostDescription={this.updatePostDescription}/>
         </PostLayout>
       </HomeLayout>
     );
