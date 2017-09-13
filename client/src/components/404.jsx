@@ -1,9 +1,12 @@
 import React from 'react';
+import styled from 'styled-components';
+import { NotFoundContainer } from '../styles/styled-components';
 
 const NotFound = (props) => (
-  <div>
-    404 - Not Found
-  </div>
+  <NotFoundContainer>
+    <h2>404 - Not Found</h2>
+  </NotFoundContainer>
 );
+
 
 export default NotFound;

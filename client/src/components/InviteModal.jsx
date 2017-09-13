@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Modal, Button, Form, Input } from 'antd';
 const FormItem = Form.Item;
 import axios from 'axios';
+import { InviteModalContainer } from '../styles/styled-components';
 
 class InviteModal extends Component {
   constructor(props) {
@@ -95,7 +96,7 @@ class InviteModal extends Component {
       },
     };
     return (
-      <div id='invite-modal' style={{ textAlign: 'center'}}>
+      <InviteModalContainer>
         <Button type="primary" onClick={this.showModal}>{this.props.isCollapsed ? '++' : 'Invite your Family'}</Button>
         <Modal
           title="Invite by Email"
@@ -115,7 +116,7 @@ class InviteModal extends Component {
           </Form>
           <p>{modalText}</p>
         </Modal>
-      </div>
+      </InviteModalContainer>
     );
   }
 }

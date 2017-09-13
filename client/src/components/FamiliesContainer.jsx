@@ -1,19 +1,18 @@
 import React from 'react';
 import Family from './Family.jsx';
 import AddFamily from './AddFamily.jsx';
+import { FamiliesHeader, FamilyImages, AddFamilyContainer } from '../styles/styled-components';
 
 const FamiliesContainer = (props) => (
-  <div style = {{padding: '20px'}}>
-    My Family
-    <div style = {{padding: '10px', display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}}>
-      {props.familyImages.map((member, i) => (
-        <Family key={i} member={member}/>
-      ))}
-    </div>
-    <div style= {{float: 'right', padding: '10px'}}>
+  <FamiliesHeader>
+    <span>My Family</span>
+    <FamilyImages>
+      <Family members={props.familyImages} />
+    </FamilyImages>
+    <AddFamilyContainer>
       <AddFamily />
-    </div>
-  </div>
+    </AddFamilyContainer>
+  </FamiliesHeader>
 );
 
 export default FamiliesContainer;
