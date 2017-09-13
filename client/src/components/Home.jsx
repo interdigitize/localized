@@ -13,13 +13,20 @@ class Home extends React.Component {
     this.state = {
       posts: [],
       familyMembers: [],
+<<<<<<< HEAD
       family_id: __PRELOADED_STATE__.family_id
+=======
+      family_id: 1,
+      familyName: '',
+>>>>>>> Adds functions to get and update the family name
     };
     this.getAllPostsByFamily = this.getAllPostsByFamily.bind(this);
     this.getAllFamilyMembers = this.getAllFamilyMembers.bind(this);
     this.updatePosts = this.updatePosts.bind(this);
     this.updatePostTitle = this.updatePostTitle.bind(this);
     this.updatePostDescription = this.updatePostDescription.bind(this);
+    this.updateFamilyName = this.updateFamilyName.bind(this);
+    this.getFamilyName = this.getFamilyName.bind(this);
   }
 
   getAllPostsByFamily() {
@@ -54,9 +61,24 @@ class Home extends React.Component {
       });
   }
 
+  getFamilyName() {
+    axios.get(`/api/families/${this.state.family_id}`)
+      .then((res) => {
+        if (res.data) {
+          this.setState({
+            familyName: res.data
+          });
+        }
+      })
+      .catch( (err) => {
+        console.log('[Client] getFamilyName error');
+      });
+  }
+
   componentDidMount() {
     this.getAllFamilyMembers();
     this.getAllPostsByFamily();
+    this.getFamilyName();
   }
 
   updatePosts(postInfo) {
@@ -65,6 +87,23 @@ class Home extends React.Component {
     this.setState({
       posts: arr
     });
+  }
+
+  updateFamilyName(info) {
+    var name = info.target.textContent;
+    axios.put(`api/families/${this.state.family_id}`, {
+      params: {
+        name: name
+      }
+    })
+      .then((response) => {
+        if (response) {
+          console.log('[Client] Successful post family name update');
+        }
+      })
+      .catch((error) => {
+        console.log('[Client] Ssave post family name error:', error);
+      });
   }
 
   updatePostTitle(info) {
@@ -107,7 +146,7 @@ class Home extends React.Component {
     return (
       <HomeLayout>
         <FamilyMemberLayout>
-          <FamiliesContainer familyImages={this.state.familyMembers} />
+          <FamiliesContainer familyImages={this.state.familyMembers} familyName={this.state.familyName} updateFamilyName={this.updateFamilyName} />
         </FamilyMemberLayout>
         <Content style={{ background: '#f9f9f9', padding: 10 }}>
           <UploadMedia updatePosts={this.updatePosts} />
