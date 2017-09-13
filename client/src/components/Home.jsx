@@ -18,6 +18,8 @@ class Home extends React.Component {
     this.getAllPostsByFamily = this.getAllPostsByFamily.bind(this);
     this.getAllFamilyMembers = this.getAllFamilyMembers.bind(this);
     this.updatePosts = this.updatePosts.bind(this);
+    this.updatePostTitle = this.updatePostTitle.bind(this);
+    this.updatePostDescription = this.updatePostDescription.bind(this);
   }
 
   getAllPostsByFamily() {
@@ -48,7 +50,7 @@ class Home extends React.Component {
         }
       })
       .catch((error) => {
-        console.log('[client] display family members error:', error);
+        console.log('[Client] display family members error:', error);
       });
   }
 
@@ -65,8 +67,43 @@ class Home extends React.Component {
     });
   }
 
+  updatePostTitle(info) {
+    var title = info.target.textContent;
+    var post_id = info.target.getAttribute('id');
+    axios.put(`/api/posts/${post_id}`, {
+      params: {
+        title: title,
+        type: 'title'
+      }})
+      .then((response) => {
+        if (response.data) {
+          console.log('[Client] Successful post title update');
+        }
+      })
+      .catch((error) => {
+        console.log('[Client] Save post title error:', error);
+      });
+  }
+
+  updatePostDescription(info) {
+    var description = info.target.textContent;
+    var post_id = info.target.getAttribute('id');
+    axios.put(`/api/posts/${post_id}`, {
+      params: {
+        description: description,
+        type: 'description'
+      }})
+      .then((response) => {
+        if (response.data) {
+          console.log('[Client] Successful post description update');
+        }
+      })
+      .catch((error) => {
+        console.log('[Client] Save post title error:', error);
+      });
+  }
+
   render() {
-    console.log('this.state.family_id is', this.state.family_id);
     return (
       <HomeLayout>
         <FamilyMemberLayout>
@@ -76,7 +113,7 @@ class Home extends React.Component {
           <UploadMedia updatePosts={this.updatePosts} />
         </Content>
         <PostLayout>
-          <PostsContainer posts={this.state.posts}/>
+          <PostsContainer posts={this.state.posts} updatePostTitle={this.updatePostTitle} updatePostDescription={this.updatePostDescription}/>
         </PostLayout>
       </HomeLayout>
     );

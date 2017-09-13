@@ -5,8 +5,8 @@ module.exports.save = (req, res) => {
   //FILE
   var filename = req.files[0].originalname;
   var mimetype = req.files[0].mimetype;
-  var title = 'A title...';
-  var description = 'A description...';
+  var title = 'Add a title';
+  var description = 'Add a description';
   //AWS
   var region = 'us-west-1';
   var bucket = 'localized-0001';
@@ -39,11 +39,11 @@ module.exports.save = (req, res) => {
       })
         .save()
         .then((saved) => {
-          console.log('SAVED', saved);
           res.json({
             url: saved.attributes.url,
             title: saved.attributes.title,
             description: saved.attributes.description,
+            id: saved.id
           });
         })
         .catch((error) => {
