@@ -21,7 +21,7 @@ class Home extends React.Component {
     this.getAllPostsByFamily = this.getAllPostsByFamily.bind(this);
     this.getAllFamilyMembers = this.getAllFamilyMembers.bind(this);
     this.updatePosts = this.updatePosts.bind(this);
-    this.savePostTitle = this.savePostTitle.bind(this);
+    this.updatePostTitle = this.updatePostTitle.bind(this);
     this.savePostDescription = this.savePostDescription.bind(this);
   }
 
@@ -70,7 +70,7 @@ class Home extends React.Component {
     });
   }
 
-  savePostTitle(info) {
+  updatePostTitle(info) {
     var title = info.target.textContent;
     var post_id = info.target.getAttribute('id');
     axios.get('/api/posts/' + post_id)
