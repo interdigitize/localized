@@ -25,7 +25,7 @@ class Uploader extends React.Component {
           processing: false
         });
         this.props.updatePosts(res.data);
-        console.log('file was uploaded successfully.');
+        console.log('File was uploaded successfully.');
       })
       .catch(err => {
         this.setState({
@@ -38,6 +38,7 @@ class Uploader extends React.Component {
   handleFile(e) {
     let formData = new FormData(); //FormData needs to be used for Multer to parse the data on the server
     formData.append('file', e.target.files[0]);
+    formData.append('family_id', __PRELOADED_STATE__.family_id);
     this.setState({
       file: formData
     });
