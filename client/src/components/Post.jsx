@@ -35,7 +35,7 @@ const Post = (props) => {
       </video>
     );
   } else {
-    tagType = (<div className="custom-image" style={{backgroundImage: `url(${props.post.url})`}}></div>);
+    tagType = (<div className="custom-image" onClick={props.handleDisplayLightbox}  style={{backgroundImage: `url(${props.post.url})`}}></div>);
   }
 
   return (

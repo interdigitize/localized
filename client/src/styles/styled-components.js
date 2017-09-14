@@ -3,6 +3,7 @@ import { small } from './utils';
 import { Layout } from 'antd';
 const { Content } = Layout;
 import { Menu } from 'antd';
+import colors from './colors';
 
 // 404.jsx
 export const NotFoundContainer = styled.div`
@@ -62,8 +63,54 @@ export const InviteModalContainer = styled.div`
   text-align: center;
 `;
 
-// Main.jsx
+// Lightbox
+export const Close = styled.div`
+  & i {
+    z-index: 99999;
+    position: fixed;
+    color: ${colors.grey};
+    top: 3%;
+    right: 7%;
+  }
+  &:hover{
+    cursor: pointer;
+  }
+`;
 
+export const LightboxBackground = styled.div`
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.8);
+`;
+
+export const LightboxContent = styled.div`
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.8);
+  overflow: visible;
+`;
+
+export const LightboxImg = styled.img`
+  height: 40vw;
+  width: auto;
+  margin: 50px auto;
+`;
+
+export const LightboxCaption = styled.div`
+  color: #ccc;
+`;
+
+// Main.jsx
 
 // Member.jsx
 export const MemberImage = styled.div`

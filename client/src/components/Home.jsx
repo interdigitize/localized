@@ -15,7 +15,9 @@ class Home extends React.Component {
       familyMembers: [],
       family_id: __PRELOADED_STATE__.family_id,
       familyName: '',
-      user_id: __PRELOADED_STATE__.user.id
+      user_id: __PRELOADED_STATE__.user.id,
+      displayLightbox: false,
+      lightboxPost: {}
     };
     this.getAllPostsByFamily = this.getAllPostsByFamily.bind(this);
     this.getAllFamilyMembers = this.getAllFamilyMembers.bind(this);
@@ -24,6 +26,7 @@ class Home extends React.Component {
     this.updatePostDescription = this.updatePostDescription.bind(this);
     this.updateFamilyName = this.updateFamilyName.bind(this);
     this.getFamilyName = this.getFamilyName.bind(this);
+    this.handleDisplayLightbox = this.handleDisplayLightbox.bind(this);
   }
 
   getAllPostsByFamily() {
@@ -130,6 +133,13 @@ class Home extends React.Component {
       }
     });
   }
+  
+  handleDisplayLightbox(post) {
+    this.setState({
+      displayLightbox: !this.state.displayLightbox,
+      lightboxPost: post
+    });
+  }
 
   render() {
     return (
@@ -141,7 +151,13 @@ class Home extends React.Component {
           <UploadMedia updatePosts={this.updatePosts} />
         </Content>
         <PostLayout>
-          <PostsContainer posts={this.state.posts} loggedInUser={this.state.user_id} updatePostTitle={this.updatePostTitle} updatePostDescription={this.updatePostDescription}/>
+          <PostsContainer posts={this.state.posts}
+            loggedInUser={this.state.user_id}
+            updatePostTitle={this.updatePostTitle}
+            updatePostDescription={this.updatePostDescription}
+            handleDisplayLightbox={this.handleDisplayLightbox}
+            displayLightbox={this.state.displayLightbox}
+            lightboxPost={this.state.lightboxPost} />
         </PostLayout>
       </HomeLayout>
     );
