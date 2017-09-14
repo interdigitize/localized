@@ -4,6 +4,7 @@ const router = express.Router();
 const Posts = require('../controllers').Posts;
 
 router.route('/:post_id')
-  .put(Posts.update);
+  .put(Posts.update)
+  .delete(Posts.delete);
 
 module.exports = router;
