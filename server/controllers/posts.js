@@ -9,8 +9,8 @@ module.exports.update = (req, res) => {
       post.set(req.body.params.type, req.body.params[req.body.params.type]);
       return post.save();
     })
-    .then(() => {
-      res.sendStatus(201);
+    .then(data => {
+      res.send(201).send(data.name);
     })
     .error(err => {
       res.status(500).send(err);

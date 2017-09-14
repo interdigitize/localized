@@ -1,6 +1,10 @@
 {
   "name": "course.thesis",
   "version": "1.0.0",
+  "jest": {
+    "verbose": true,
+    "bail": false
+  },
   "scripts": {
     "postinstall": "curl -s https://raw.githubusercontent.com/reactorcore/pomander/master/bin/install | bash",
     "start": "nodemon server",

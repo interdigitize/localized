@@ -13,13 +13,17 @@ class Home extends React.Component {
     this.state = {
       posts: [],
       familyMembers: [],
-      family_id: __PRELOADED_STATE__.family_id
+      family_id: __PRELOADED_STATE__.family_id,
+      familyName: '',
+      user_id: __PRELOADED_STATE__.user.id
     };
     this.getAllPostsByFamily = this.getAllPostsByFamily.bind(this);
     this.getAllFamilyMembers = this.getAllFamilyMembers.bind(this);
     this.updatePosts = this.updatePosts.bind(this);
     this.updatePostTitle = this.updatePostTitle.bind(this);
     this.updatePostDescription = this.updatePostDescription.bind(this);
+    this.updateFamilyName = this.updateFamilyName.bind(this);
+    this.getFamilyName = this.getFamilyName.bind(this);
   }
 
   getAllPostsByFamily() {
@@ -54,9 +58,24 @@ class Home extends React.Component {
       });
   }
 
+  getFamilyName() {
+    axios.get(`/api/families/${this.state.family_id}`)
+      .then((res) => {
+        if (res.data) {
+          this.setState({
+            familyName: res.data
+          });
+        }
+      })
+      .catch( (err) => {
+        console.log('[Client] getFamilyName error');
+      });
+  }
+
   componentDidMount() {
     this.getAllFamilyMembers();
     this.getAllPostsByFamily();
+    this.getFamilyName();
   }
 
   updatePosts(postInfo) {
@@ -67,53 +86,62 @@ class Home extends React.Component {
     });
   }
 
-  updatePostTitle(info) {
-    var title = info.target.textContent;
-    var post_id = info.target.getAttribute('id');
-    axios.put(`/api/posts/${post_id}`, {
-      params: {
-        title: title,
-        type: 'title'
-      }})
+
+  putTextEdits(url, params) {
+    axios.put(url, params)
       .then((response) => {
-        if (response.data) {
-          console.log('[Client] Successful post title update');
+        if (response) {
+          console.log('[Client] Successful post family name update');
         }
       })
       .catch((error) => {
-        console.log('[Client] Save post title error:', error);
+        console.log('[Client] Ssave post family name error:', error);
       });
+  }
+
+
+  updateFamilyName(info) {
+    var name = info.target.textContent;
+    this.putTextEdits(`api/families/${this.state.family_id}`, {
+      params: {
+        name: name
+      }
+    });
+  }
+
+  updatePostTitle(info) {
+    var title = info.target.textContent;
+    var post_id = info.target.getAttribute('id');
+    this.putTextEdits(`/api/posts/${post_id}`, {
+      params: {
+        title: title,
+        type: 'title'
+      }
+    });
   }
 
   updatePostDescription(info) {
     var description = info.target.textContent;
     var post_id = info.target.getAttribute('id');
-    axios.put(`/api/posts/${post_id}`, {
+    this.putTextEdits(`/api/posts/${post_id}`, {
       params: {
         description: description,
         type: 'description'
-      }})
-      .then((response) => {
-        if (response.data) {
-          console.log('[Client] Successful post description update');
-        }
-      })
-      .catch((error) => {
-        console.log('[Client] Save post title error:', error);
-      });
+      }
+    });
   }
 
   render() {
     return (
       <HomeLayout>
         <FamilyMemberLayout>
-          <FamiliesContainer familyImages={this.state.familyMembers} />
+          <FamiliesContainer familyImages={this.state.familyMembers} familyName={this.state.familyName} updateFamilyName={this.updateFamilyName} />
         </FamilyMemberLayout>
         <Content style={{ background: '#f9f9f9', padding: 10 }}>
           <UploadMedia updatePosts={this.updatePosts} />
         </Content>
         <PostLayout>
-          <PostsContainer posts={this.state.posts} updatePostTitle={this.updatePostTitle} updatePostDescription={this.updatePostDescription}/>
+          <PostsContainer posts={this.state.posts} loggedInUser={this.state.user_id} updatePostTitle={this.updatePostTitle} updatePostDescription={this.updatePostDescription}/>
         </PostLayout>
       </HomeLayout>
     );
