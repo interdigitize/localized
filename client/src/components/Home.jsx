@@ -15,6 +15,7 @@ class Home extends React.Component {
       familyMembers: [],
       family_id: __PRELOADED_STATE__.family_id,
       familyName: '',
+      user_id: __PRELOADED_STATE__.user.id
     };
     this.getAllPostsByFamily = this.getAllPostsByFamily.bind(this);
     this.getAllFamilyMembers = this.getAllFamilyMembers.bind(this);
@@ -140,7 +141,7 @@ class Home extends React.Component {
           <UploadMedia updatePosts={this.updatePosts} />
         </Content>
         <PostLayout>
-          <PostsContainer posts={this.state.posts} updatePostTitle={this.updatePostTitle} updatePostDescription={this.updatePostDescription}/>
+          <PostsContainer posts={this.state.posts} loggedInUser={this.state.user_id} updatePostTitle={this.updatePostTitle} updatePostDescription={this.updatePostDescription}/>
         </PostLayout>
       </HomeLayout>
     );

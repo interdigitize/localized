@@ -2,6 +2,18 @@ import React from 'react';
 import { shallow, mount, render } from 'enzyme';
 import Post from '../client/src/components/Post.jsx';
 
+var dummyState = {
+  id: 1,
+  first: 'firstName',
+  last: 'lastName',
+  display: 'displayName',
+  email: '123@gmail.com',
+  phone: null,
+  avatar: 'http://i.huffpost.com/gen/1899877/images/n-BEYONCE-SMILING-628x314.jpg',
+  created_at: '2017-09-14T02:45:51.914Z',
+  updated_at: '2017-09-14T02:45:51.914Z'
+};
+
 const dummydata = [
   {
     id: 1,
@@ -37,7 +49,7 @@ const dummydata = [
 describe('Post Component', () => {
   //1) no props
   it('It should have props', function(){
-    expect(shallow(<Post post={dummydata[0]}/>).find('[post]')).toBeTruthy();
+    expect(shallow(<Post post={dummydata[0]} __PRELOADED_STATE__={dummyState}/>).find('[post]')).toBeTruthy();
   });
   //2) no post url
   it('A post should have a url', function(){
