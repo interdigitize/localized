@@ -13,12 +13,8 @@ class Home extends React.Component {
     this.state = {
       posts: [],
       familyMembers: [],
-<<<<<<< HEAD
-      family_id: __PRELOADED_STATE__.family_id
-=======
-      family_id: 1,
+      family_id: __PRELOADED_STATE__.family_id,
       familyName: '',
->>>>>>> Adds functions to get and update the family name
     };
     this.getAllPostsByFamily = this.getAllPostsByFamily.bind(this);
     this.getAllFamilyMembers = this.getAllFamilyMembers.bind(this);
@@ -89,13 +85,9 @@ class Home extends React.Component {
     });
   }
 
-  updateFamilyName(info) {
-    var name = info.target.textContent;
-    axios.put(`api/families/${this.state.family_id}`, {
-      params: {
-        name: name
-      }
-    })
+
+  putTextEdits(url, params) {
+    axios.put(url, params)
       .then((response) => {
         if (response) {
           console.log('[Client] Successful post family name update');
@@ -106,40 +98,50 @@ class Home extends React.Component {
       });
   }
 
+
+  updateFamilyName(info) {
+    var name = info.target.textContent;
+    this.putTextEdits(`api/families/${this.state.family_id}`, {
+      params: {
+        name: name
+      }
+    });
+  }
+
   updatePostTitle(info) {
     var title = info.target.textContent;
     var post_id = info.target.getAttribute('id');
-    axios.put(`/api/posts/${post_id}`, {
+    this.putTextEdits(`/api/posts/${post_id}`, {
       params: {
         title: title,
         type: 'title'
-      }})
-      .then((response) => {
-        if (response.data) {
-          console.log('[Client] Successful post title update');
-        }
-      })
-      .catch((error) => {
-        console.log('[Client] Save post title error:', error);
-      });
+      }
+    });
   }
 
   updatePostDescription(info) {
     var description = info.target.textContent;
     var post_id = info.target.getAttribute('id');
-    axios.put(`/api/posts/${post_id}`, {
+    this.putTextEdits(`/api/posts/${post_id}`, {
       params: {
         description: description,
         type: 'description'
-      }})
-      .then((response) => {
-        if (response.data) {
-          console.log('[Client] Successful post description update');
-        }
-      })
-      .catch((error) => {
-        console.log('[Client] Save post title error:', error);
-      });
+      }
+    });
+
+    // axios.put(`/api/posts/${post_id}`, {
+    //   params: {
+    //     description: description,
+    //     type: 'description'
+    //   }})
+    //   .then((response) => {
+    //     if (response.data) {
+    //       console.log('[Client] Successful post description update');
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.log('[Client] Save post title error:', error);
+    //   });
   }
 
   render() {
