@@ -27,7 +27,6 @@ app.use('/', routes.auth);
 app.use('/api/profiles', routes.profiles);
 app.use('/api/posts', routes.posts);
 app.use('/api/families', routes.families);
-app.use('/api/upload', routes.upload);
 app.use('/api/mailer', routes.mailer);
 app.use('/api', routes.api);
 

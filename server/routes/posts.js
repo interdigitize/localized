@@ -7,4 +7,7 @@ router.route('/:post_id')
   .put(Posts.update)
   .delete(Posts.delete);
 
+router.route('/')
+  .post(Posts.save);
+
 module.exports = router;

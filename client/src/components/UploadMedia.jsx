@@ -19,7 +19,7 @@ class Uploader extends React.Component {
       processing: true
     });
 
-    axios.post('/api/upload', this.state.file)
+    axios.post('/api/posts', this.state.file)
       .then( res => {
         this.setState({
           processing: false
