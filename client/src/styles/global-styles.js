@@ -49,10 +49,4 @@ injectGlobal`
   .custom-card p {
     color: #999;
   }
-
-  .family-member-image {
-  }
-
-  .family-member-name {
-  }
 `;
