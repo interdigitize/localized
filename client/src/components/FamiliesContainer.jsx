@@ -6,9 +6,7 @@ import { FamiliesHeader, FamilyImages, AddFamilyContainer } from '../styles/styl
 const FamiliesContainer = (props) => (
   <FamiliesHeader>
     <span>My Family</span>
-    <FamilyImages>
-      <Family members={props.familyImages} />
-    </FamilyImages>
+    <Family members={props.familyImages} />
     <AddFamilyContainer>
       <AddFamily />
     </AddFamilyContainer>

@@ -1,4 +1,4 @@
-const posts = require('../dummydata2.js').dummydataTwo['posts'];
+const posts = require('../dummydata.js').dummydata['posts'];
 
 exports.seed = function (knex, Promise) {
   var postPromises = [];

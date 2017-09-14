@@ -43,7 +43,8 @@ module.exports.save = (req, res) => {
             url: saved.attributes.url,
             title: saved.attributes.title,
             description: saved.attributes.description,
-            id: saved.id
+            id: saved.id,
+            user_id: saved.attributes.user_id
           });
         })
         .catch((error) => {

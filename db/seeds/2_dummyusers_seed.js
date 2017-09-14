@@ -1,5 +1,5 @@
 const models = require('../models');
-const users = require('../dummydata2.js').dummydataTwo['profiles'];
+const users = require('../dummydata.js').dummydata['profiles'];
 
 exports.seed = function (knex, Promise) {
   var userPromises = [];

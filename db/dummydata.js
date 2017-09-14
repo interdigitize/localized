@@ -1,4 +1,4 @@
-const dummydataTwo = {
+const dummydata = {
   profiles: [
     {
       first: "Cameron",
@@ -72,6 +72,62 @@ const dummydataTwo = {
       phone: "4407043086",
       avatar: "https://static.independent.co.uk/s3fs-public/thumbnails/image/2015/06/15/09/jon-snow.jpg"
     },
+    {
+      first: "Michael",
+      last: "Fassbender",
+      display: "Michael",
+      email: "mfassbender@gmail.com",
+      phone: "9234801312",
+      avatar: "http://michael-fassbender-online.net/wp-content/themes/awake/lib/scripts/timthumb/thumb.php?src=http://michael-fassbender-online.net/wp-content/uploads/2015/08/MF-Tux.jpg&w=980&h=420&zc=1&q=100"
+    },
+    {
+      first: "Harry",
+      last: "Shum Jr",
+      display: "Harry",
+      email: "harryshumjr@gmail.com",
+      phone: "9234808342",
+      avatar: "http://www.star2.com/wp-content/uploads/2016/03/harry_shum_jr_a_p-e1431739786837-770x470.jpg"
+    },
+    {
+      first: "Kate",
+      last: "Winslet",
+      display: "Kate",
+      email: "katewinslet@gmail.com",
+      phone: "2334808342",
+      avatar: "https://upload.wikimedia.org/wikipedia/commons/9/99/Kate_Winslet_at_The_Dressmaker_event_TIFF_%28headshot%29.jpg"
+    },
+    {
+      first: "Issa",
+      last: "Rae",
+      display: "Issa",
+      email: "issarae@gmail.com",
+      phone: "2334808342",
+      avatar: "http://www.trbimg.com/img-586555ff/turbine/la-en-st-1229-issa-rae-20161228"
+    },
+    {
+      first: "Eva",
+      last: "Mendes",
+      display: "Eva",
+      email: "evamendes@gmail.com",
+      phone: "1334308442",
+      avatar: "https://i.pinimg.com/736x/e2/e1/c9/e2e1c923f41b3cd650141a68745c434f--eva-mendes-style-prom-hairstyles.jpg"
+    },
+    {
+      first: "Ed",
+      last: "Norton",
+      display: "Ed",
+      email: "ednorton@gmail.com",
+      phone: "6334309432",
+      avatar: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Ed_Norton_Shankbone_Metropolitan_Opera_2009.jpg/220px-Ed_Norton_Shankbone_Metropolitan_Opera_2009.jpg"
+    },
+    {
+      first: "Selma",
+      last: "Hayek",
+      display: "Selma",
+      email: "selmahayek@gmail.com",
+      phone: "6334381433",
+      avatar: "https://media1.s-nbcnews.com/j/newscms/2017_21/1216209/salma-hayek-hair-today-inline-001-170522_243d723cbe725b08ee6f2022670207b5.today-inline-large.jpg"
+    }
   ],
   posts: [
     {
@@ -194,4 +250,4 @@ const dummydataTwo = {
   ]
 };
 
-module.exports.dummydataTwo = dummydataTwo;
+module.exports.dummydata = dummydata;

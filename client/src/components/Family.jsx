@@ -1,13 +1,14 @@
 import React from 'react';
 import dummydata from '../dummydata';
 import Member from './Member.jsx';
+import { FamilyImages } from '../styles/styled-components';
 
 const Family = (props) => (
-  <div>
+  <FamilyImages>
     {props.members.map((user, i) => (
       <Member key={i} member={user}/>
     ))}
-  </div>
+  </FamilyImages>
 );
 
 export default Family;

@@ -26,7 +26,7 @@ export const FamiliesHeader = styled.div`
 export const FamilyImages = styled.div`
   display: flex;
   flex-direction: row;
-  flexWrap: wrap;
+  flex-wrap: wrap;
   padding: 10px;
 `;
 
