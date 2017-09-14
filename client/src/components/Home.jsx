@@ -128,20 +128,6 @@ class Home extends React.Component {
         type: 'description'
       }
     });
-
-    // axios.put(`/api/posts/${post_id}`, {
-    //   params: {
-    //     description: description,
-    //     type: 'description'
-    //   }})
-    //   .then((response) => {
-    //     if (response.data) {
-    //       console.log('[Client] Successful post description update');
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.log('[Client] Save post title error:', error);
-    //   });
   }
 
   render() {
