@@ -14,7 +14,9 @@ const PostsContainer = (props) => (
             loggedInUser={props.loggedInUser}
             updatePostTitle={props.updatePostTitle}
             updatePostDescription={props.updatePostDescription}
-            handleDisplayLightbox={() => props.handleDisplayLightbox(post)}/>
+            handleDisplayLightbox={() => props.handleDisplayLightbox(post)}
+            deletePost={props.deletePost}
+          />
         </Col>
       ))}
       { props.displayLightbox ? <Lightbox lightboxPost={props.lightboxPost} handleDisplayLightbox={props.handleDisplayLightbox} /> : null }
