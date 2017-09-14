@@ -25,6 +25,7 @@ module.exports.update = (req, res) => {
     });
 };
 
+<<<<<<< HEAD
 module.exports.delete = (req, res) => {
   let fileName = req.query.url.split('com/').pop();
   models.Posts.query().where({ id: req.params.post_id }).del()
@@ -55,6 +56,8 @@ module.exports.delete = (req, res) => {
     });
 };
 
+=======
+>>>>>>> Refactors s3 route to follow restful standards
 module.exports.save = (req, res) => {
   //FILE
   var filename = req.files[0].originalname;
