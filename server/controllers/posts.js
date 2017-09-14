@@ -63,6 +63,7 @@ module.exports.delete = (req, res) => {
     });
 };
 
+<<<<<<< HEAD
 var save = (req, res, data = null, thumbnailUrl = null) => {
   new models.Posts({
     url: data.Location,
