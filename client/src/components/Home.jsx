@@ -71,8 +71,8 @@ class Home extends React.Component {
           });
         }
       })
-      .catch( (err) => {
-        console.log('[Client] getFamilyName error');
+      .catch( (error) => {
+        console.log('[Client] getFamilyName error:', error);
       });
   }
 
@@ -99,7 +99,7 @@ class Home extends React.Component {
         }
       })
       .catch((error) => {
-        console.log('[Client] Ssave post family name error:', error);
+        console.log('[Client] Save post family name error:', error);
       });
   }
 
@@ -156,7 +156,7 @@ class Home extends React.Component {
         console.log('Post deleted successfully');
       })
       .catch((error) => {
-        console.log('Error deleting post');
+        console.log('Error deleting post:', error);
       });
   }
 
