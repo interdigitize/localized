@@ -27,6 +27,7 @@ class Home extends React.Component {
     this.updateFamilyName = this.updateFamilyName.bind(this);
     this.getFamilyName = this.getFamilyName.bind(this);
     this.handleDisplayLightbox = this.handleDisplayLightbox.bind(this);
+    this.deletePost = this.deletePost.bind(this);
   }
 
   getAllPostsByFamily() {
@@ -70,8 +71,8 @@ class Home extends React.Component {
           });
         }
       })
-      .catch( (err) => {
-        console.log('[Client] getFamilyName error');
+      .catch( (error) => {
+        console.log('[Client] getFamilyName error:', error);
       });
   }
 
@@ -98,7 +99,7 @@ class Home extends React.Component {
         }
       })
       .catch((error) => {
-        console.log('[Client] Ssave post family name error:', error);
+        console.log('[Client] Save post family name error:', error);
       });
   }
 
@@ -141,6 +142,24 @@ class Home extends React.Component {
     });
   }
 
+  deletePost(info) {
+    let post_id = info;
+
+    axios.delete(`/api/posts/${post_id}`)
+      .then((response) => {
+        let updatedPosts = this.state.posts;
+        updatedPosts.splice(updatedPosts.indexOf(post_id), 1);
+        
+        this.setState({
+          posts: updatedPosts
+        });
+        console.log('Post deleted successfully');
+      })
+      .catch((error) => {
+        console.log('Error deleting post:', error);
+      });
+  }
+
   render() {
     return (
       <HomeLayout>
@@ -157,7 +176,9 @@ class Home extends React.Component {
             updatePostDescription={this.updatePostDescription}
             handleDisplayLightbox={this.handleDisplayLightbox}
             displayLightbox={this.state.displayLightbox}
-            lightboxPost={this.state.lightboxPost} />
+            lightboxPost={this.state.lightboxPost} 
+            deletePost={this.deletePost}
+          />
         </PostLayout>
       </HomeLayout>
     );

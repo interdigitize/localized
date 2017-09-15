@@ -31,11 +31,11 @@ module.exports.save = (req, res) => {
       new models.Posts({
         url: data.Location,
         user_id: req.user.id,
-        family_id: 1,
+        family_id: req.body.family_id,
         type: mimetype,
         title: title,
         description: description,
-        etag: data.ETag,
+        etag: data.ETag.slice(1, -1),
       })
         .save()
         .then((saved) => {
