@@ -6,6 +6,7 @@ import axios from 'axios';
 import { HomeLayout, FamilyMemberLayout, PostLayout } from '../styles/styled-components';
 import { Layout } from 'antd';
 const { Content } = Layout;
+const moment = require('moment');
 
 class Home extends React.Component {
   constructor(props) {
@@ -28,6 +29,7 @@ class Home extends React.Component {
     this.getFamilyName = this.getFamilyName.bind(this);
     this.handleDisplayLightbox = this.handleDisplayLightbox.bind(this);
     this.deletePost = this.deletePost.bind(this);
+    this.searchPostsByDate = this.searchPostsByDate.bind(this);
   }
 
   getAllPostsByFamily() {
@@ -95,11 +97,11 @@ class Home extends React.Component {
     axios.put(url, params)
       .then((response) => {
         if (response) {
-          console.log('[Client] Successful post family name update');
+          console.log('[Client] Successful post update');
         }
       })
       .catch((error) => {
-        console.log('[Client] Save post family name error:', error);
+        console.log('[Client] Save post error:', error);
       });
   }
 
@@ -134,7 +136,7 @@ class Home extends React.Component {
       }
     });
   }
-  
+
   handleDisplayLightbox(post) {
     this.setState({
       displayLightbox: !this.state.displayLightbox,
@@ -149,7 +151,7 @@ class Home extends React.Component {
       .then((response) => {
         let updatedPosts = this.state.posts;
         updatedPosts.splice(updatedPosts.indexOf(post_id), 1);
-        
+
         this.setState({
           posts: updatedPosts
         });
@@ -157,6 +159,30 @@ class Home extends React.Component {
       })
       .catch((error) => {
         console.log('Error deleting post:', error);
+      });
+  }
+
+  searchPostsByDate(events) {
+    var fromDate = moment(events[0]['_d']).startOf('day')._d;
+    var toDate = moment(events[1]['_d']).endOf('day')._d;
+    // console.log('from date is', fromDate);
+    // console.log('to date is', toDate);
+    axios.get(`/api/posts/family/${this.state.family_id}`, {
+      params: {
+        fromDate: fromDate,
+        toDate: toDate,
+      }
+    })
+      .then((response) => {
+        if (response.data) {
+          this.setState({
+            posts: response.data
+          });
+        }
+        console.log('response is', response);
+      })
+      .catch( (error) => {
+        console.log('[Client] searchPosts error', error);
       });
   }
 
@@ -176,8 +202,9 @@ class Home extends React.Component {
             updatePostDescription={this.updatePostDescription}
             handleDisplayLightbox={this.handleDisplayLightbox}
             displayLightbox={this.state.displayLightbox}
-            lightboxPost={this.state.lightboxPost} 
+            lightboxPost={this.state.lightboxPost}
             deletePost={this.deletePost}
+            searchPostsByDate={this.searchPostsByDate}
           />
         </PostLayout>
       </HomeLayout>
