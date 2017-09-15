@@ -34,6 +34,7 @@ module.exports.delete = (req, res) => {
     .catch((err) => {
       res.sendStatus(404);
     });
+};
 
 module.exports.save = (req, res) => {
   //FILE
@@ -65,7 +66,7 @@ module.exports.save = (req, res) => {
       new models.Posts({
         url: data.Location,
         user_id: req.user.id,
-        family_id: 1,
+        family_id: req.body.family_id,
         type: mimetype,
         title: title,
         description: description,
