@@ -2,7 +2,8 @@ import styled, { css } from 'styled-components';
 import { small } from './utils';
 import { Layout } from 'antd';
 const { Content } = Layout;
-import { Menu } from 'antd';
+import { Menu, DatePicker } from 'antd';
+const { RangePicker } = DatePicker;
 import colors from './colors';
 
 // 404.jsx
@@ -159,6 +160,10 @@ export const AvatarMenuItem = styled(Menu.Item)`
 `;
 
 // Post.jsx
+export const RangePickerItem = styled(RangePicker)`
+  padding: 10px;
+  float: right;
+`;
 
 
 // PostContainer.jsx
