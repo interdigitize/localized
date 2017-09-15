@@ -163,10 +163,8 @@ class Home extends React.Component {
   }
 
   searchPostsByDate(events) {
-    var fromDate = moment(events[0]['_d']).startOf('day')._d;
-    var toDate = moment(events[1]['_d']).endOf('day')._d;
-    // console.log('from date is', fromDate);
-    // console.log('to date is', toDate);
+    var fromDate = moment(events[0]['_d']).startOf('day')._d; // Using MomentJS, the "from" date will be manipulated to be the start of the day (e.g., September 14, 2017 at 12:00:00am)
+    var toDate = moment(events[1]['_d']).endOf('day')._d; // Using MomentJS, the "to" date will be manipulated to be the end of the day (e.g., September 14, 2017 at 11:59:59pm)
     axios.get(`/api/posts/family/${this.state.family_id}`, {
       params: {
         fromDate: fromDate,
