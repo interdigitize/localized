@@ -100,6 +100,6 @@ module.exports.get = (req, res) => {
       res.send(posts);
     })
     .catch((error) => {
-      console.log('[server] get posts by family error', error);
+      console.log('[server] get posts by family and date error', error);
     });
 };
