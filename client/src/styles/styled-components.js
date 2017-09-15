@@ -96,7 +96,7 @@ export const LightboxContent = styled.div`
   text-align: center;
   top: 0;
   left: 0;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.5);
   overflow: visible;
 `;
 
