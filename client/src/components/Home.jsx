@@ -144,14 +144,21 @@ class Home extends React.Component {
     });
   }
 
-  deletePost(info) {
-    let post_id = info;
-
-    axios.delete(`/api/posts/${post_id}`)
+  deletePost(id, url) {
+    axios.delete(`/api/posts/${id}`, {
+      params: {
+        url,
+      }
+    })
       .then((response) => {
         let updatedPosts = this.state.posts;
-        updatedPosts.splice(updatedPosts.indexOf(post_id), 1);
-
+        for (let i = 0; i < updatedPosts.length; i++) {
+          if (updatedPosts[i].id === id) {
+            updatedPosts.splice(i, 1);
+            break;
+          }
+        }
+        
         this.setState({
           posts: updatedPosts
         });
