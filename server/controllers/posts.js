@@ -1,5 +1,6 @@
 const models = require('../../db/models');
 const s3 = require('../middleware/s3').s3;
+const moment = require('moment');
 
 module.exports.update = (req, res) => {
   models.Posts.where({ id: req.params.post_id }).fetch()
@@ -88,4 +89,17 @@ module.exports.save = (req, res) => {
         });
     }
   });
+};
+
+module.exports.get = (req, res) => {
+  models.Posts.query((qb) => {
+    qb.where('family_id', '=', req.params.family_id).andWhereBetween('created_at', [req.query.fromDate, req.query.toDate]);
+  })
+    .fetchAll()
+    .then((posts) => {
+      res.send(posts);
+    })
+    .catch((error) => {
+      console.log('[server] get posts by family and date error', error);
+    });
 };

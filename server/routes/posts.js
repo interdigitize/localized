@@ -10,4 +10,7 @@ router.route('/:post_id')
 router.route('/')
   .post(Posts.save);
 
+router.route('/family/:family_id')
+  .get(Posts.get);
+
 module.exports = router;
