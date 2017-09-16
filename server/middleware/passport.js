@@ -49,7 +49,6 @@ passport.use('local-signup', new LocalStrategy({
       return profile;
     })
     .tap(profile => {
-      // console.log(req.body);
       // associate user to family if family_id is present
       if (req.body.family_id === '' || req.body.family_id === 'undefined') {
         models.Familie.forge().save().then((familie) => {
@@ -57,7 +56,21 @@ passport.use('local-signup', new LocalStrategy({
         });
       } else {
         models.Familie.where({ 'id': req.body.family_id }).fetch().then((familie) => {
-          profile.families().attach(familie);
+          models.Invites.where({ email: profile.get('email'), family_id: familie.get('id') }).fetch()
+            .tap((invite) => {
+              profile.families().attach(familie);
+            })
+            .then((invite) => {
+              invite.destroy().then((model) => {
+                console.log(model, 'destroyed!');
+              });
+            })
+            .catch(() => {
+              // create new family
+              models.Familie.forge().save().then(familie => {
+                profile.families().attach(familie);
+              });
+            });
         });
       }
       // create a new local auth account with the user's profile id

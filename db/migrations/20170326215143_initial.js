@@ -40,11 +40,18 @@ exports.up = function (knex, Promise) {
       table.string('salt', 100).nullable();
       table.integer('profile_id').references('profiles.id').onDelete('CASCADE');
     }),
+    knex.schema.createTableIfNotExists('invites', function(table) {
+      table.increments('id').unsigned().primary();
+      table.string('email', 100).notNullable();
+      table.string('invited_by', 100).notNullable();
+      table.integer('family_id').notNullable();
+    }),
   ]);
 };
 
 exports.down = function (knex, Promise) {
   return Promise.all([
+    knex.schema.dropTable('invites'),
     knex.schema.dropTable('auths'),
     knex.schema.dropTable('families_profiles'),
     knex.schema.dropTable('profiles'),

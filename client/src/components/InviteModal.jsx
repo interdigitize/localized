@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Button, Form, Input } from 'antd';
+import { Modal, Button, Form, Input, Icon } from 'antd';
 const FormItem = Form.Item;
 import axios from 'axios';
 import { InviteModalContainer } from '../styles/styled-components';
@@ -10,15 +10,19 @@ class InviteModal extends Component {
     this.state = {
       visible: false,
       okText: 'Invite',
-      emailString: '',
+      emailStrings: {},
       validateStatus: '',
       btnText: 'Invite your Family',
-      modalText: "Enter a family member's email here. They will get an invite link to your family!"
+      modalText: 'Enter a family member\'s email here. They will get an invite link to your family!',
+      invites: ['invite-0'],
+      emailSuccess: false
     };
     this.showModal = this.showModal.bind(this);
     this.handleOk = this.handleOk.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.appendInput = this.appendInput.bind(this);
+    this.truncateInput = this.truncateInput.bind(this);
   }
 
   componentDidMount() {
@@ -30,9 +34,20 @@ class InviteModal extends Component {
   }
 
   showModal() {
-    this.setState({
-      visible: !this.state.visible,
-    });
+    if (this.state.visible) {
+      this.setState({
+        visible: !this.state.visible,
+        emailStrings: {},
+        okText: 'Invite',
+        emailSuccess: false,
+        validateStatus: '',
+        invites: ['invite-0']
+      });
+    } else {
+      this.setState({
+        visible: !this.state.visible,
+      });
+    }
   }
 
   handleOk(){
@@ -48,21 +63,37 @@ class InviteModal extends Component {
       validateStatus: 'validating',
       modalText: 'Emails are sending...'
     });
+
     const { email, first, last } = __PRELOADED_STATE__.user;
-    axios.get('/api/mailer/inviteByEmail', {
+    const familyId = __PRELOADED_STATE__.family_id;
+    const emailStrings = Object.values(this.state.emailStrings).join(', ');
+
+    axios.get('/api/mailer/invite', {
       params: {
-        toEmail: this.state.emailString,
+        toEmail: emailStrings,
         fromEmail: email,
         fromFirst: first,
-        fromLast: last
+        fromLast: last,
+        familyId: familyId
       }})
       .then((response) => {
-        if(response.data) {
+        if(response.data.success) {
           this.setState({
             validateStatus: 'success',
-            modalText: 'Sucesss! Inform your family to check their email for your invite!'
+            modalText: 'Sucesss! Emails are on thier way!',
+            emailSuccess: true,
+            okText: 'Close'
           });
+
+          axios.get('/api/mailer/send').then((response) => {
+            console.log('success');
+            console.log(response);
+          })
+            .catch(error => {
+              console.log(error);
+            });
         } else {
+          // update modalText to be message | figure out how apis respond with data
           this.setState({
             validateStatus: 'error',
             modalText: 'Oh no! Something happened, please check your input and try again.'
@@ -70,6 +101,7 @@ class InviteModal extends Component {
         }
       })
       .catch((error) => {
+        console.log(error);
         this.setState({
           validateStatus: 'error',
           modalText: 'Oh no. Theres a problem. Please try again.'
@@ -78,9 +110,20 @@ class InviteModal extends Component {
   }
 
   handleInputChange(e) {
+    const inviteId = e.target.dataset['invite'];
+    const updatedEmailString = Object.assign({}, this.state.emailStrings, { [inviteId]: e.target.value });
     this.setState({
-      emailString: e.target.value
+      emailStrings: updatedEmailString
     });
+  }
+
+  appendInput() {
+    const newInvite = `invite-${this.state.invites.length}`;
+    this.setState({ invites: this.state.invites.concat([newInvite]) });
+  }
+
+  truncateInput() {
+    this.setState({ invites: this.state.invites.slice(0, -1) });
   }
 
   render() {
@@ -95,24 +138,36 @@ class InviteModal extends Component {
         sm: { span: 24 },
       },
     };
+    const truncateBtn = (this.state.invites.length > 1 ? <Button style={{marginLeft: '5px'}} onClick={() => this.truncateInput()}>-</Button> : null);
     return (
       <InviteModalContainer>
-        <Button type="primary" onClick={this.showModal}>{this.props.isCollapsed ? '++' : 'Invite your Family'}</Button>
+        <Button type='primary' onClick={this.showModal}>{this.props.isCollapsed ? '++' : 'Invite your Family'}</Button>
         <Modal
-          title="Invite by Email"
+          title='Invite by Email'
           visible={visible}
-          onOk={this.handleSubmit}
+          onOk={this.state.emailSuccess ? this.showModal : this.handleSubmit }
           okText={this.state.okText}
           confirmLoading={confirmLoading}
           onCancel={this.showModal}
-          width="316">
+          width='316'>
           <Form>
-            <FormItem
-              {...formItemLayout}
-              hasFeedback
-              validateStatus={this.state.validateStatus}>
-              <Input placeholder="dad@myfamily.com" id="validating" onChange={this.handleInputChange} />
-            </FormItem>
+            {this.state.invites.map(invite =>
+              <FormItem
+                {...formItemLayout}
+                key={invite}
+                hasFeedback
+                validateStatus={this.state.validateStatus}
+                style={{marginBottom: '5px'}}>
+                <Input
+                  data-invite={invite}
+                  placeholder='example@myfamily.com'
+                  onChange={this.handleInputChange}
+                  value={this.state.emailStrings[invite]}
+                />
+              </FormItem>
+            )}
+            <Button onClick={() => this.appendInput()}>Add Recipient</Button>
+            {truncateBtn}
           </Form>
           <p>{modalText}</p>
         </Modal>
