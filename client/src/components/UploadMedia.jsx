@@ -20,14 +20,14 @@ class Uploader extends React.Component {
     });
 
     axios.post('/api/posts', this.state.file)
-      .then( res => {
+      .then((response) => {
         this.setState({
           processing: false
         });
-        this.props.updatePosts(res.data);
+        this.props.updatePosts(response.data);
         console.log('File was uploaded successfully.');
       })
-      .catch(err => {
+      .catch((err) => {
         this.setState({
           processing: false
         });
