@@ -145,7 +145,6 @@ class Home extends React.Component {
   }
 
   deletePost(id, url) {
-    console.log('urlpost :', url);
     axios.delete(`/api/posts/${id}`, {
       params: {
         url,
