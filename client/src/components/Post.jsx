@@ -55,7 +55,7 @@ const Post = (props) => {
             onInput={props.updatePostDescription}>
             <p>{props.post.description}</p>
           </div>
-          <Icon type="delete" onClick={() => props.deletePost(props.post.id)}/>
+          <Icon type="delete" onClick={ (e) => props.deletePost(props.post.id, props.post.url)}/>
         </div>
       </Card>
     </div>
