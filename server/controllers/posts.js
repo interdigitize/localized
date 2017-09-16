@@ -2,6 +2,9 @@ const models = require('../../db/models');
 const s3 = require('../middleware/s3').s3;
 const moment = require('moment');
 
+const region = 'us-west-1';
+const bucket = 'localized-0001';
+
 module.exports.update = (req, res) => {
   models.Posts.where({ id: req.params.post_id }).fetch()
     .then((post) => {
@@ -23,11 +26,26 @@ module.exports.update = (req, res) => {
 };
 
 module.exports.delete = (req, res) => {
+  let fileName = req.query.url.split('com/').pop();
   models.Posts.query().where({ id: req.params.post_id }).del()
     .then((post) => {
       if (!post) {
         throw post;
       }
+    })
+    .then(() => {
+      let params = {
+        Bucket: bucket,
+        Key: fileName,
+      };
+
+      s3.deleteObject(params, (err, data) => {
+        if (data) {
+          console.log('File deleted successfully :', data);
+        } else {
+          console.log('Check if you have sufficient permissions :', err);
+        }
+      });
     })
     .then(() => {
       res.sendStatus(201);
@@ -44,11 +62,7 @@ module.exports.save = (req, res) => {
   var title = 'Add a title';
   var description = 'Add a description';
   //AWS
-  var region = 'us-west-1';
-  var bucket = 'localized-0001';
   var key = Date.now().toString() + '_' + filename;
-
-  // var awsLink = `https://s3-${region}.amazonaws.com/localized-0001/${key}`;
 
   var params = {
     ACL: 'public-read',
