@@ -91,7 +91,7 @@ class InviteModal extends Component {
               modalText += input.payload.message + ' ';
               console.log(modalText);
             }
-            var updatedValidateStatus = Object.assign({}, this.state.validateStatus, { [emailInput]: input.success })
+            var updatedValidateStatus = Object.assign({}, this.state.validateStatus, { [emailInput]: input.success });
             context.setState({
               validateStatus: updatedValidateStatus,
               modalText: modalText
@@ -102,22 +102,21 @@ class InviteModal extends Component {
         var toEmails = response.data.payload.filter((input) => {
           return input.success === true;
         })
-        .map((input) => {
-          return input.payload.email;
-        });
+          .map((input) => {
+            return input.payload.email;
+          });
 
         axios.get('/api/mailer/sendEmails', {
           params: {
             toEmails
           }
         })
-        .then((response) => {
-          console.log('success');
-        })
-        .catch(error => {
-          console.log(error);
-        });
-
+          .then((response) => {
+            console.log('success');
+          })
+          .catch(error => {
+            console.log(error);
+          });
       })
       .catch((error) => {
         this.setState({

@@ -47,9 +47,9 @@ const emailStatus = (toEmail, fromEmail, familyId) => {
       })
       .error(error => {
         return error;
-      })
+      });
   });
-}
+};
 
 
 /**
@@ -74,7 +74,7 @@ module.exports.invite = (req, res) => {
       json = {
         success,
         payload: results
-      }
+      };
 
       res.json(json);
     });
@@ -117,13 +117,13 @@ module.exports.sendEmails = (req, res) => {
       };
 
       transporter.sendMail(mailOptions, (err, res) => {
-          if (err) {
-            console.log(err);
-            inviteByEmailCB(false);
-          } else {
-            inviteByEmailCB(true);
-          };
-        });
+        if (err) {
+          console.log(err);
+          inviteByEmailCB(false);
+        } else {
+          inviteByEmailCB(true);
+        }
       });
+    });
   });
 };

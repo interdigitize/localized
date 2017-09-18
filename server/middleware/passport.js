@@ -58,20 +58,20 @@ passport.use('local-signup', new LocalStrategy({
         models.Familie.where({ 'id': req.body.family_id }).fetch().then((familie) => {
           if (familie) {
             models.Invites.where({ email: profile.get('email'), family_id: familie.get('id') }).fetch()
-            .tap((invite) => {
-              profile.families().attach(familie);
-            })
-            .then((invite) => {
-              invite.destroy().then((model) => {
-                console.log('Invite succesfully destroyed.');
-              });
-            })
-            .catch(() => {
-              // create new family
-              models.Familie.forge().save().then(familie => {
+              .tap((invite) => {
                 profile.families().attach(familie);
+              })
+              .then((invite) => {
+                invite.destroy().then((model) => {
+                  console.log('Invite succesfully destroyed.');
+                });
+              })
+              .catch(() => {
+                // create new family
+                models.Familie.forge().save().then(familie => {
+                  profile.families().attach(familie);
+                });
               });
-            });
           } else {
             models.Familie.forge().save().then(familie => {
               profile.families().attach(familie);
