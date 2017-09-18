@@ -11,7 +11,7 @@ class InviteModal extends Component {
       visible: false,
       okText: 'Invite',
       emailStrings: {},
-      validateStatus: '',
+      validateStatus: {},
       btnText: 'Invite your Family',
       modalText: 'Enter a family member\'s email here. They will get an invite link to your family!',
       invites: ['invite-0'],
@@ -40,7 +40,7 @@ class InviteModal extends Component {
         emailStrings: {},
         okText: 'Invite',
         emailSuccess: false,
-        validateStatus: '',
+        validateStatus: {},
         invites: ['invite-0']
       });
     } else {
@@ -52,7 +52,6 @@ class InviteModal extends Component {
 
   handleOk(){
     this.setState({
-      modalText: 'The modal will be closed after two seconds',
       okText: 'Inviting...',
       confirmLoading: true
     });
@@ -60,7 +59,6 @@ class InviteModal extends Component {
 
   handleSubmit() {
     this.setState({
-      validateStatus: 'validating',
       modalText: 'Emails are sending...'
     });
 
@@ -80,28 +78,48 @@ class InviteModal extends Component {
         if(response.data.success) {
           this.setState({
             validateStatus: 'success',
-            modalText: 'Sucesss! Emails are on thier way!',
+            modalText: 'Sucesss! The emails are on thier way!',
             emailSuccess: true,
             okText: 'Close'
           });
-
-          axios.get('/api/mailer/send').then((response) => {
-            console.log('success');
-            console.log(response);
-          })
-            .catch(error => {
-              console.log(error);
-            });
         } else {
-          // update modalText to be message | figure out how apis respond with data
-          this.setState({
-            validateStatus: 'error',
-            modalText: 'Oh no! Something happened, please check your input and try again.'
+          var context = this;
+          var modalText = 'Hmmm there were some issues: ';
+          response.data.payload.forEach((input, index) => {
+            var emailInput = `invite-${index}`;
+            if (!input.success) {
+              modalText += input.payload.message + ' ';
+              console.log(modalText);
+            }
+            var updatedValidateStatus = Object.assign({}, this.state.validateStatus, { [emailInput]: input.success })
+            context.setState({
+              validateStatus: updatedValidateStatus,
+              modalText: modalText
+            });
           });
         }
+
+        var toEmails = response.data.payload.filter((input) => {
+          return input.success === true;
+        })
+        .map((input) => {
+          return input.payload.email;
+        });
+
+        axios.get('/api/mailer/sendEmails', {
+          params: {
+            toEmails
+          }
+        })
+        .then((response) => {
+          console.log('success');
+        })
+        .catch(error => {
+          console.log(error);
+        });
+
       })
       .catch((error) => {
-        console.log(error);
         this.setState({
           validateStatus: 'error',
           modalText: 'Oh no. Theres a problem. Please try again.'
@@ -156,7 +174,7 @@ class InviteModal extends Component {
                 {...formItemLayout}
                 key={invite}
                 hasFeedback
-                validateStatus={this.state.validateStatus}
+                validateStatus={this.state.validateStatus[invite] ? 'success' : ''}
                 style={{marginBottom: '5px'}}>
                 <Input
                   data-invite={invite}
