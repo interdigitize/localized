@@ -158,7 +158,7 @@ class Home extends React.Component {
             break;
           }
         }
-        
+
         this.setState({
           posts: updatedPosts
         });
@@ -210,6 +210,7 @@ class Home extends React.Component {
             lightboxPost={this.state.lightboxPost}
             deletePost={this.deletePost}
             searchPostsByDate={this.searchPostsByDate}
+            familyMembers={this.state.familyMembers}
           />
         </PostLayout>
       </HomeLayout>

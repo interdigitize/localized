@@ -47,11 +47,19 @@ exports.up = function (knex, Promise) {
       table.string('invited_by', 100).notNullable();
       table.integer('family_id').notNullable();
     }),
+    knex.schema.createTableIfNotExists('comments', function(table) {
+      table.increments('id').unsigned().primary();
+      table.string('content', 500).notNullable();
+      table.timestamp('created_at').defaultTo(knex.fn.now());
+      table.integer('posted_by').notNullable();
+      table.integer('post_id').references('posts.id').onDelete('CASCADE');
+    }),
   ]);
 };
 
 exports.down = function (knex, Promise) {
   return Promise.all([
+    knex.schema.dropTable('comments'),
     knex.schema.dropTable('invites'),
     knex.schema.dropTable('auths'),
     knex.schema.dropTable('families_profiles'),

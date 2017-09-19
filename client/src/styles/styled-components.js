@@ -5,6 +5,8 @@ const { Content } = Layout;
 import { Menu, DatePicker } from 'antd';
 const { RangePicker } = DatePicker;
 import colors from './colors';
+import Comments from '../components/Comments.jsx';
+import Member from '../components/Member.jsx';
 
 // 404.jsx
 export const NotFoundContainer = styled.div`
@@ -94,21 +96,49 @@ export const LightboxContent = styled.div`
   z-index: 1000;
   width: 100%;
   height: 100%;
-  text-align: center;
   top: 0;
   left: 0;
   background: rgba(0,0,0,0.5);
   overflow: visible;
 `;
 
-export const LightboxImg = styled.img`
-  height: 40vw;
+export const LightboxContainer = styled.div`
+  height: 80vh;
   width: auto;
-  margin: 50px auto;
+  margin: 50px 50px;
+  display: flex;
+  justify-content: center;
 `;
 
 export const LightboxCaption = styled.div`
   color: #ccc;
+`;
+
+export const LightboxImg = styled.div`
+  ${props => props.image && css`
+    background-image: url(${props.image});
+  `}
+  height: 100%;
+  width: 399px;
+  ${props => props.size === 'large' && css`
+    width: 699px;
+  `}
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+`;
+
+export const LightboxMember = styled.div`
+
+`;
+
+// Comments.jsx
+
+export const LightboxSidebar = styled.div`
+  background: #fff;
+  width: 28vw;
+  height: 100%;
+  padding: 25px 17px;
 `;
 
 // Main.jsx
@@ -122,11 +152,11 @@ export const MemberImage = styled.div`
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: cover;
-  width: 50px;
-  height: 50px;
   border-radius: 100%;
-  margin-right: 20px;
   margin-bottom: 10px;
+  width: ${props => props.small ? '30px' : '50px'};
+  height: ${props => props.small ? '30px' : '50px'};
+  margin-right: ${props => props.small ? '20px' : '50px'};
 `;
 
 export const MemberName = styled.div`
@@ -170,3 +200,16 @@ export const RangePickerItem = styled(RangePicker)`
 
 
 // UploadMedia.jsx
+
+// Comments.jsx
+
+export const CommentsContainer = styled.div`
+  overflow: auto;
+  max-height: 48vh;
+`;
+
+export const PostCategories = styled.div`
+  padding: 15px 0;
+  border-top: 1pt solid #eee;
+  border-bottom: 1pt solid #eee;
+`;
