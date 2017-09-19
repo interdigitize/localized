@@ -4,3 +4,4 @@ module.exports.profiles = require('./profiles');
 module.exports.mailer = require('./mailer');
 module.exports.posts = require('./posts');
 module.exports.families = require('./families');
+module.exports.comments = require('./comments');

@@ -22,7 +22,7 @@ const PostsContainer = (props) => (
           />
         </Col>
       ))}
-      { props.displayLightbox ? <Lightbox lightboxPost={props.lightboxPost} handleDisplayLightbox={props.handleDisplayLightbox} /> : null }
+      { props.displayLightbox ? <Lightbox familyMembers={props.familyMembers} lightboxPost={props.lightboxPost} handleDisplayLightbox={props.handleDisplayLightbox} /> : null }
     </div>
   </div>
 );

@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const middleware = require('./middleware');
 const routes = require('./routes');
+const db = require('../db');
 
 const app = express();
 
@@ -28,6 +29,7 @@ app.use('/api/profiles', routes.profiles);
 app.use('/api/posts', routes.posts);
 app.use('/api/families', routes.families);
 app.use('/api/mailer', routes.mailer);
+app.use('/api/comments', routes.comments);
 app.use('/api', routes.api);
 
 app.get('*', (req, res) => {
@@ -36,5 +38,6 @@ app.get('*', (req, res) => {
   // grab other relevant user data
   res.render(path.resolve(__dirname, 'views', 'index.ejs'), { preloadedState });
 });
+
 
 module.exports = app;
