@@ -63,10 +63,6 @@ module.exports.delete = (req, res) => {
     });
 };
 
-module.exports.save = (req, res) => {
-  //FILE
-  var filename = req.files[0].originalname;
-=======
 var save = (req, res, data = null, thumbnailUrl = null) => {
   new models.Posts({
     url: data.Location,
@@ -96,7 +92,6 @@ var save = (req, res, data = null, thumbnailUrl = null) => {
 };
 
 module.exports.post = (req, res) => {
->>>>>>> Adds video image capture and pulls out saving to the db so it is its own function.
   var mimetype = req.files[0].mimetype;
   var filename = req.files[0].originalname;
   var key = Date.now().toString() + '_' + filename;
@@ -151,7 +146,6 @@ module.exports.post = (req, res) => {
           if (error) { console.log('Error removing the ', error); }
         });
       });
-
     }
   });
 };
