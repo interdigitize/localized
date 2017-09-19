@@ -30,9 +30,8 @@ const Post = (props) => {
     props.post.type === 'video/webm' ||
     props.post.type === 'video/ogg') {
     tagType = (
-      <video className="custom-image" controls>
-        <source src={props.post.url} type={props.post.type}/>
-      </video>
+
+      <div className="custom-image" onClick={props.handleDisplayLightbox} style={{backgroundImage: `url(${props.post.thumbnail})`}}><Icon type="play-circle-o" style={{ fontSize: 60, color: 'rgba(255, 255, 255, 0.7)', marginLeft: 'auto', marginRight: 'auto', width: '100%', paddingTop: '45%' }} /></div>
     );
   } else {
     tagType = (<div className="custom-image" onClick={props.handleDisplayLightbox} style={{backgroundImage: `url(${props.post.url})`}}></div>);
@@ -43,15 +42,15 @@ const Post = (props) => {
       <Card style={{ width: 300}} bodyStyle={{ padding: 15 }}>
         {tagType}
         <div className="custom-card">
-          <div 
-            contentEditable={poster === props.loggedInUser} 
-            id={props.post.id} 
+          <div
+            contentEditable={poster === props.loggedInUser}
+            id={props.post.id}
             onInput={props.updatePostTitle}>
             <h5>{props.post.title}</h5>
           </div>
-          <div 
-            contentEditable={poster === props.loggedInUser} 
-            id={props.post.id} 
+          <div
+            contentEditable={poster === props.loggedInUser}
+            id={props.post.id}
             onInput={props.updatePostDescription}>
             <p>{props.post.description}</p>
           </div>

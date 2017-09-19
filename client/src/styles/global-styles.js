@@ -22,6 +22,7 @@ injectGlobal`
     width: 100%;
   }
 
+
   h1, h2, h3, h4, h5, h6{
     margin: 0 0 15px 0;
     line-height: 1.3;
@@ -40,6 +41,10 @@ injectGlobal`
     background-size: cover;
     width: 100%;
     height: 301px;
+  }
+
+  .custom-image:hover {
+    opacity: 0.75;
   }
 
   .custom-card {

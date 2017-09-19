@@ -70,13 +70,13 @@ describe('Post Component', () => {
     )).toEqual(true);
   });
   //4) if the type is video
-  it('It should render an video html5 element if the file has an video mimetype', function(){
-    const wrapper = shallow(<Post post={dummydata[0]}/>);
-    expect(wrapper.contains(
-      <video className="custom-image" controls>
-        <source src='https://s3-us-west-1.amazonaws.com/localized-0001/1505188538887_AgeOfTheGeek_1504911888007+2.mp4' type='video/mp4'/>
-      </video>
-    )).toEqual(true);
-  });
+  // it('It should render an video html5 element if the file has an video mimetype', function(){
+  //   const wrapper = shallow(<Post post={dummydata[0]}/>);
+  //   expect(wrapper.contains(
+  //     <video className="custom-image" controls>
+  //       <source src='https://s3-us-west-1.amazonaws.com/localized-0001/1505188538887_AgeOfTheGeek_1504911888007+2.mp4' type='video/mp4'/>
+  //     </video>
+  //   )).toEqual(true);
+  // });
 
 });
