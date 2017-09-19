@@ -8,7 +8,7 @@ router.route('/:post_id')
   .delete(Posts.delete);
 
 router.route('/')
-  .post(Posts.save);
+  .post(Posts.post);
 
 router.route('/family/:family_id')
   .get(Posts.get);
