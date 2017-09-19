@@ -8,7 +8,7 @@ import Avatar from './Avatar.jsx';
 import {
   MemberImage,
   CommentsContainer as Container
- }from '../styles/styled-components';
+} from '../styles/styled-components';
 
 
 class Comments extends Component {
@@ -89,7 +89,7 @@ class Comments extends Component {
           </div>
         ))}
         <div>
-          <Input style={{ marginBottom:'5px', width: '97%' }}
+          <Input style={{ marginBottom: '5px', width: '97%' }}
             placeholder="Write a comment..."
             onChange={this.handleChange}
             value={this.state.commentString}
