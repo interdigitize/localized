@@ -10,6 +10,7 @@ exports.up = function (knex, Promise) {
       table.string('title');
       table.string('description');
       table.string('etag');
+      table.string('thumbnail');
       table.timestamp('created_at').defaultTo(knex.fn.now());
       table.timestamp('updated_at').defaultTo(knex.fn.now());
     }),
